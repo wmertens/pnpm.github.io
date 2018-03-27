@@ -1,0 +1,140 @@
+<html lang="ru"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>pnpm CLI · pnpm</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta property="og:title" content="pnpm CLI · pnpm"/><meta property="og:type" content="website"/><meta property="og:url" content="https://pnpm.js.org//index.html"/><meta property="og:description" content="Just use pnpm in place of npm:"/><link rel="shortcut icon" href="/img/favicon.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible doc"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/ru"><img class="logo" src="/img/pnpm-no-name-with-frame.svg"/><h2 class="headerTitle">pnpm</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/ru/motivation.html" target="_self">Docs</a></li><li class=""><a href="/docs/ru/faq.html" target="_self">FAQ</a></li><li class=""><a href="https://medium.com/pnpm" target="_self">Blog</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/en">English</a></li><li><a href="/de">Deutsch</a></li><li><a href="/es-ES">Español</a></li><li><a href="/hu">Magyar</a></li><li><a href="/pt-BR">Português (Brasil)</a></li><li><a href="/ru">Русский</a></li><li><a href="/uk">Українська</a></li><li><a href="/zh-CN">中文</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(){
+          if(languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Usage</span></h2></div><div class="navGroups"><div class="navGroup navGroupActive"><h3>Introduction</h3><ul><li class="navListItem"><a class="navItem" href="/docs/ru/motivation.html">Motivation</a></li><li class="navListItem"><a class="navItem" href="/docs/ru/installation.html">Installation</a></li></ul></div><div class="navGroup navGroupActive"><h3>Usage</h3><ul><li class="navListItem navListItemActive"><a class="navItem navItemActive" href="/docs/ru/pnpm-cli.html">pnpm CLI</a></li><li class="navListItem"><a class="navItem" href="/docs/ru/pnpx-cli.html">pnpx CLI</a></li><li class="navListItem"><a class="navItem" href="/docs/ru/configuring.html">Configuring</a></li><li class="navListItem"><a class="navItem" href="/docs/ru/hooks.html">Hooks</a></li><li class="navListItem"><a class="navItem" href="/docs/ru/aliases.html">Aliases</a></li></ul></div><div class="navGroup navGroupActive"><h3>Recipes</h3><ul><li class="navListItem"><a class="navItem" href="/docs/ru/continuous-integration.html">Continuous Integration</a></li><li class="navListItem"><a class="navItem" href="/docs/ru/workspace.html">Workspace</a></li></ul></div><div class="navGroup navGroupActive"><h3>Advanced</h3><ul><li class="navListItem"><a class="navItem" href="/docs/ru/benchmark.html">Benchmark</a></li><li class="navListItem"><a class="navItem" href="/docs/ru/limitations.html">Limitations</a></li><li class="navListItem"><a class="navItem" href="/docs/ru/about-package-store.html">About the package store</a></li><li class="navListItem"><a class="navItem" href="/docs/ru/symlinked-node-modules-structure.html">Symlinked `node_modules` structure</a></li><li class="navListItem"><a class="navItem" href="/docs/ru/how-peers-are-resolved.html">How peers are resolved</a></li></ul></div></div></section></div><script>
+          var toggler = document.getElementById('navToggler');
+          var nav = document.getElementById('docsNav');
+          toggler.onclick = function() {
+            nav.classList.toggle('docsSliderActive');
+          };
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1>pnpm CLI</h1></header><article><div><span><p>Just use pnpm in place of npm:</p>
+<pre><code class="hljs">pnpm install lodash
+</code></pre>
+<p>npm commands that are re-implemented in pnpm:</p>
+<ul>
+<li><code>install</code></li>
+<li><code>update</code></li>
+<li><code>uninstall</code></li>
+<li><code>link</code></li>
+<li><code>prune</code></li>
+<li><code>list</code></li>
+<li><code>install-test</code></li>
+<li><code>outdated</code></li>
+<li><code>rebuild</code></li>
+<li><code>root</code></li>
+<li><code>help</code></li>
+</ul>
+<p>Also, pnpm has some custom commands.</p>
+<h2><a class="anchor" aria-hidden="true" id="dislink"></a><a href="#dislink" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>dislink</h2>
+<p>Unlinks a package. Like <code>yarn unlink</code> but pnpm re-installs the dependency after removing the external link.</p>
+<h2><a class="anchor" aria-hidden="true" id="store-status"></a><a href="#store-status" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>store status</h2>
+<p>Returns a 0 exit code if packages in the store are not modified, i.e. the content of the package is the same as it was at the time of unpacking.</p>
+<h2><a class="anchor" aria-hidden="true" id="store-prune"></a><a href="#store-prune" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>store prune</h2>
+<p>Removes unreferenced (extraneous, orphan) packages from the store.</p>
+<h2><a class="anchor" aria-hidden="true" id="server-start"></a><a href="#server-start" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>server start</h2>
+<p>Added in: v1.30.0</p>
+<blockquote>
+<p>Stability: Experimental</p>
+</blockquote>
+<p>Starts a server that does all interactions with the store. Other commands will delegate any store-related tasks to this server.</p>
+<p>Related configs:</p>
+<h3><a class="anchor" aria-hidden="true" id="background"></a><a href="#background" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>background</h3>
+<p>Added in: v1.30.0</p>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>Runs the server in the background.</p>
+<h3><a class="anchor" aria-hidden="true" id="protocol"></a><a href="#protocol" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>protocol</h3>
+<p>Added in: v1.30.0</p>
+<ul>
+<li>Default: <strong>auto</strong></li>
+<li>Type: <strong>auto</strong>, <strong>tcp</strong>, <strong>ipc</strong></li>
+</ul>
+<p>The communication protocol used by the server. When <strong>auto</strong> is used, <strong>ipc</strong> used on non-Windows servers and <strong>tcp</strong> on Windows.</p>
+<h3><a class="anchor" aria-hidden="true" id="port"></a><a href="#port" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>port</h3>
+<p>Added in: v1.30.0</p>
+<ul>
+<li>Default: <strong>5813</strong></li>
+<li>Type: <strong>port number</strong></li>
+</ul>
+<p>The port number to use, when TCP is used for communication. If port is specified and <strong>protocol</strong> is set to auto, <strong>tcp</strong> protocol is used.</p>
+<p>Other configs that are used by <code>pnpm server</code>: <strong>store</strong>, <strong>lock</strong>.</p>
+<h3><a class="anchor" aria-hidden="true" id="ignore-stop-requests"></a><a href="#ignore-stop-requests" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ignore-stop-requests</h3>
+<p>Added in: v1.30.0</p>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>Disallows stopping the server using <code>pnpm server stop</code>.</p>
+<h3><a class="anchor" aria-hidden="true" id="ignore-upload-requests"></a><a href="#ignore-upload-requests" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ignore-upload-requests</h3>
+<p>Added in: v1.31.0</p>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>Disallows creating new side effect cache during install.</p>
+<h2><a class="anchor" aria-hidden="true" id="server-stop"></a><a href="#server-stop" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>server stop</h2>
+<p>Added in: v1.30.0</p>
+<blockquote>
+<p>Stability: Experimental</p>
+</blockquote>
+<p>Stops the store server.</p>
+<h2><a class="anchor" aria-hidden="true" id="recursive-install"></a><a href="#recursive-install" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>recursive install</h2>
+<p>Added in: v1.24.0</p>
+<blockquote>
+<p>Stability: Experimental</p>
+</blockquote>
+<pre><code class="hljs">pnpm recursive [concurrency] install [arguments]
+</code></pre>
+<p>Concurrently runs install in all subdirectories with a <code>package.json</code> (excluding node_modules).</p>
+<p>Usage examples:</p>
+<pre><code class="hljs">pnpm recursive install
+pnpm recursive 10 install --ignore-scripts
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="recursive-update"></a><a href="#recursive-update" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>recursive update</h2>
+<p>Added in: v1.24.0</p>
+<blockquote>
+<p>Stability: Experimental</p>
+</blockquote>
+<pre><code class="hljs">pnpm recursive [concurrency] update [arguments]
+</code></pre>
+<p>Concurrently runs update in all subdirectories with a <code>package.json</code> (excluding node_modules).</p>
+<p>Usage examples:</p>
+<pre><code class="hljs">pnpm recursive update
+pnpm recursive update --depth 100
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="recursive-link"></a><a href="#recursive-link" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>recursive link</h2>
+<p>Added in: v1.32.0</p>
+<blockquote>
+<p>Stability: Experimental</p>
+</blockquote>
+<pre><code class="hljs">pnpm recursive [concurrency] link [arguments]
+</code></pre>
+<p>Concurrently runs installation in all subdirectories with a <code>package.json</code> (excluding node_modules). If a package is available locally, the local version is linked.</p>
+<p>Usage examples:</p>
+<pre><code class="hljs">pnpm recursive link
+pnpm recursive link --ignore-scripts
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="recursive-dislink"></a><a href="#recursive-dislink" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>recursive dislink</h2>
+<p>Added in: v1.32.0</p>
+<blockquote>
+<p>Stability: Experimental</p>
+</blockquote>
+<pre><code class="hljs">pnpm recursive [concurrency] dislink [arguments]
+</code></pre>
+<p>Removes links to local packages and reinstalls them from the registry.</p>
+<p>Usage examples:</p>
+<pre><code class="hljs">pnpm recursive dislink
+</code></pre>
+<hr>
+<p>The rest of the commands pass through to npm.</p>
+<p>For using the programmatic API, use pnpm's engine: <a href="https://github.com/pnpm/supi">supi</a>.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="installation.html">← Installation</a><a class="docs-next button" href="pnpx-cli.html">pnpx CLI →</a></div></div></div></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/pnpm-light.svg" alt="pnpm" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/ru/installation.html">Getting Started</a></div><div><h5>Community</h5><a href="/ru/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/pnpm" target="_blank">Stack Overflow</a><a href="https://gitter.im/pnpm/pnpm">Project Chat</a><a href="https://twitter.com/pnpmjs" target="_blank">Twitter</a></div><div><h5>More</h5><a href="https://medium.com/pnpm">Blog</a><a href="https://github.com/pnpm/pnpm">GitHub</a><a class="github-button" href="https://github.com/pnpm/pnpm" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div></body></html>

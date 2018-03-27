@@ -1,0 +1,89 @@
+<html lang="es-ES"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Hooks · pnpm</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta property="og:title" content="Hooks · pnpm"/><meta property="og:type" content="website"/><meta property="og:url" content="https://pnpm.js.org//index.html"/><meta property="og:description" content="pnpm allows to step directly into the installation process via special functions called *hooks*. Hooks can be declared in a file called `pnpmfile.js`. `pnpmfile.js` should live in the root of the project."/><link rel="shortcut icon" href="/img/favicon.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible doc"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/es-ES"><img class="logo" src="/img/pnpm-no-name-with-frame.svg"/><h2 class="headerTitle">pnpm</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/es-ES/motivation.html" target="_self">Docs</a></li><li class=""><a href="/docs/es-ES/faq.html" target="_self">FAQ</a></li><li class=""><a href="https://medium.com/pnpm" target="_self">Blog</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/en">English</a></li><li><a href="/de">Deutsch</a></li><li><a href="/es-ES">Español</a></li><li><a href="/hu">Magyar</a></li><li><a href="/pt-BR">Português (Brasil)</a></li><li><a href="/ru">Русский</a></li><li><a href="/uk">Українська</a></li><li><a href="/zh-CN">中文</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(){
+          if(languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Usage</span></h2></div><div class="navGroups"><div class="navGroup navGroupActive"><h3>Introduction</h3><ul><li class="navListItem"><a class="navItem" href="/docs/es-ES/motivation.html">Motivation</a></li><li class="navListItem"><a class="navItem" href="/docs/es-ES/installation.html">Installation</a></li></ul></div><div class="navGroup navGroupActive"><h3>Usage</h3><ul><li class="navListItem"><a class="navItem" href="/docs/es-ES/pnpm-cli.html">pnpm CLI</a></li><li class="navListItem"><a class="navItem" href="/docs/es-ES/pnpx-cli.html">pnpx CLI</a></li><li class="navListItem"><a class="navItem" href="/docs/es-ES/configuring.html">Configuring</a></li><li class="navListItem navListItemActive"><a class="navItem navItemActive" href="/docs/es-ES/hooks.html">Hooks</a></li><li class="navListItem"><a class="navItem" href="/docs/es-ES/aliases.html">Aliases</a></li></ul></div><div class="navGroup navGroupActive"><h3>Recipes</h3><ul><li class="navListItem"><a class="navItem" href="/docs/es-ES/continuous-integration.html">Continuous Integration</a></li><li class="navListItem"><a class="navItem" href="/docs/es-ES/workspace.html">Workspace</a></li></ul></div><div class="navGroup navGroupActive"><h3>Advanced</h3><ul><li class="navListItem"><a class="navItem" href="/docs/es-ES/benchmark.html">Benchmark</a></li><li class="navListItem"><a class="navItem" href="/docs/es-ES/limitations.html">Limitations</a></li><li class="navListItem"><a class="navItem" href="/docs/es-ES/about-package-store.html">About the package store</a></li><li class="navListItem"><a class="navItem" href="/docs/es-ES/symlinked-node-modules-structure.html">Symlinked `node_modules` structure</a></li><li class="navListItem"><a class="navItem" href="/docs/es-ES/how-peers-are-resolved.html">How peers are resolved</a></li></ul></div></div></section></div><script>
+          var toggler = document.getElementById('navToggler');
+          var nav = document.getElementById('docsNav');
+          toggler.onclick = function() {
+            nav.classList.toggle('docsSliderActive');
+          };
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1>Hooks</h1></header><article><div><span><p>pnpm allows to step directly into the installation process via special functions called <em>hooks</em>. Hooks can be declared in a file called <code>pnpmfile.js</code>. <code>pnpmfile.js</code> should live in the root of the project.</p>
+<p>An example of a <code>pnpmfile.js</code> that changes the dependencies field of a dependency:</p>
+<pre><code class="hljs css js"><span class="hljs-built_in">module</span>.exports = {
+  <span class="hljs-attr">hooks</span>: {
+    readPackage
+  }
+}
+
+<span class="hljs-comment">// This hook will override the manifest of foo@1 after downloading it from the registry</span>
+<span class="hljs-comment">// foo@1 will always be installed with the second version of bar</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">readPackage</span> (<span class="hljs-params">pkg</span>) </span>{
+  <span class="hljs-keyword">if</span> (pkg.name === <span class="hljs-string">'foo'</span> &amp;&amp; pkg.version.startsWith(<span class="hljs-string">'1.'</span>)) {
+    pkg.dependencies = {
+      <span class="hljs-attr">bar</span>: <span class="hljs-string">'^2.0.0'</span>
+    }
+  }
+  <span class="hljs-keyword">return</span> pkg
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="substitute-a-package-with-your-fork"></a><a href="#substitute-a-package-with-your-fork" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Substitute a package with your fork</h2>
+<p>Lets' suppose you forked a package with an important fix and you want the fixed version installed.</p>
+<p>The following hook substitutes <code>resolve</code> with <code>@zkochan</code>'s fork.</p>
+<pre><code class="hljs css js"><span class="hljs-meta">'use strict'</span>
+<span class="hljs-built_in">module</span>.exports = {
+  <span class="hljs-attr">hooks</span>: {
+    readPackage
+  }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">readPackage</span> (<span class="hljs-params">pkg</span>) </span>{
+  <span class="hljs-keyword">if</span> (pkg.dependencies &amp;&amp; pkg.dependencies.resolve) {
+    pkg.dependencies.resolve = <span class="hljs-string">'zkochan/node-resolve'</span>
+  }
+
+  <span class="hljs-keyword">return</span> pkg
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="packages-validation"></a><a href="#packages-validation" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Packages validation</h2>
+<p>You want only packages with MIT license in your <code>node_modules</code>? Check the licenses and throw an exception if you don't like the package's license:</p>
+<pre><code class="hljs css js"><span class="hljs-meta">'use strict'</span>
+<span class="hljs-built_in">module</span>.exports = {
+  <span class="hljs-attr">hooks</span>: {
+    readPackage
+  }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">readPackage</span> (<span class="hljs-params">pkg</span>) </span>{
+  <span class="hljs-keyword">if</span> (pkg.license !== <span class="hljs-string">'MIT'</span>) {
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'Invalid license!'</span>)
+  }
+
+  <span class="hljs-keyword">return</span> pkg
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="renaming-bins"></a><a href="#renaming-bins" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Renaming bins</h2>
+<p>You want to rename a package's bin? Just replace it:</p>
+<pre><code class="hljs css js"><span class="hljs-meta">'use strict'</span>
+<span class="hljs-built_in">module</span>.exports = {
+  <span class="hljs-attr">hooks</span>: {
+    readPackage
+  }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">readPackage</span> (<span class="hljs-params">pkg</span>) </span>{
+  <span class="hljs-keyword">if</span> (pkg.name === <span class="hljs-string">'eslint'</span>) {
+    pkg.bin = {<span class="hljs-attr">jslint</span>: pkg.bin}
+  }
+
+  <span class="hljs-keyword">return</span> pkg
+}
+</code></pre>
+<p>Now you can run <code>jslint fix</code> instead of <code>eslint fix</code>.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="configuring.html">← Configuring</a><a class="docs-next button" href="aliases.html">Aliases →</a></div></div></div></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/pnpm-light.svg" alt="pnpm" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/es-ES/installation.html">Getting Started</a></div><div><h5>Community</h5><a href="/es-ES/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/pnpm" target="_blank">Stack Overflow</a><a href="https://gitter.im/pnpm/pnpm">Project Chat</a><a href="https://twitter.com/pnpmjs" target="_blank">Twitter</a></div><div><h5>More</h5><a href="https://medium.com/pnpm">Blog</a><a href="https://github.com/pnpm/pnpm">GitHub</a><a class="github-button" href="https://github.com/pnpm/pnpm" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div></body></html>

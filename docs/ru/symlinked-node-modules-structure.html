@@ -1,0 +1,71 @@
+<html lang="ru"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Symlinked `node_modules` structure · pnpm</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta property="og:title" content="Symlinked `node_modules` structure · pnpm"/><meta property="og:type" content="website"/><meta property="og:url" content="https://pnpm.js.org//index.html"/><meta property="og:description" content="&gt; This article only describes how pnpm&#x27;s `node_modules` are structured when there are no packages with peer dependencies. For the more complex scenario of dependencies with peers, see [How peers are resolved](/docs/ru/how-peers-are-resolved.html)."/><link rel="shortcut icon" href="/img/favicon.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible doc"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/ru"><img class="logo" src="/img/pnpm-no-name-with-frame.svg"/><h2 class="headerTitle">pnpm</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/ru/motivation.html" target="_self">Docs</a></li><li class=""><a href="/docs/ru/faq.html" target="_self">FAQ</a></li><li class=""><a href="https://medium.com/pnpm" target="_self">Blog</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/en">English</a></li><li><a href="/de">Deutsch</a></li><li><a href="/es-ES">Español</a></li><li><a href="/hu">Magyar</a></li><li><a href="/pt-BR">Português (Brasil)</a></li><li><a href="/ru">Русский</a></li><li><a href="/uk">Українська</a></li><li><a href="/zh-CN">中文</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(){
+          if(languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Advanced</span></h2></div><div class="navGroups"><div class="navGroup navGroupActive"><h3>Introduction</h3><ul><li class="navListItem"><a class="navItem" href="/docs/ru/motivation.html">Motivation</a></li><li class="navListItem"><a class="navItem" href="/docs/ru/installation.html">Installation</a></li></ul></div><div class="navGroup navGroupActive"><h3>Usage</h3><ul><li class="navListItem"><a class="navItem" href="/docs/ru/pnpm-cli.html">pnpm CLI</a></li><li class="navListItem"><a class="navItem" href="/docs/ru/pnpx-cli.html">pnpx CLI</a></li><li class="navListItem"><a class="navItem" href="/docs/ru/configuring.html">Configuring</a></li><li class="navListItem"><a class="navItem" href="/docs/ru/hooks.html">Hooks</a></li><li class="navListItem"><a class="navItem" href="/docs/ru/aliases.html">Aliases</a></li></ul></div><div class="navGroup navGroupActive"><h3>Recipes</h3><ul><li class="navListItem"><a class="navItem" href="/docs/ru/continuous-integration.html">Continuous Integration</a></li><li class="navListItem"><a class="navItem" href="/docs/ru/workspace.html">Workspace</a></li></ul></div><div class="navGroup navGroupActive"><h3>Advanced</h3><ul><li class="navListItem"><a class="navItem" href="/docs/ru/benchmark.html">Benchmark</a></li><li class="navListItem"><a class="navItem" href="/docs/ru/limitations.html">Limitations</a></li><li class="navListItem"><a class="navItem" href="/docs/ru/about-package-store.html">About the package store</a></li><li class="navListItem navListItemActive"><a class="navItem navItemActive" href="/docs/ru/symlinked-node-modules-structure.html">Symlinked `node_modules` structure</a></li><li class="navListItem"><a class="navItem" href="/docs/ru/how-peers-are-resolved.html">How peers are resolved</a></li></ul></div></div></section></div><script>
+          var toggler = document.getElementById('navToggler');
+          var nav = document.getElementById('docsNav');
+          toggler.onclick = function() {
+            nav.classList.toggle('docsSliderActive');
+          };
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1>Symlinked `node_modules` structure</h1></header><article><div><span><blockquote>
+<p>This article only describes how pnpm's <code>node_modules</code> are structured when there are no packages with peer dependencies. For the more complex scenario of dependencies with peers, see <a href="/docs/ru/how-peers-are-resolved.html">How peers are resolved</a>.</p>
+</blockquote>
+<p>pnpm's <code>node_modules</code> layout uses symbolic links to create a nested structure of dependencies.</p>
+<p>Every <code>package@version</code> is linked to <code>node_modules</code> from the <a href="/docs/ru/about-package-store.html">global store</a> only once. Let's say you install <code>foo@1.0.0</code> that depends on <code>bar@1.0.0</code>. pnpm will hard link both packages to <code>node_modules</code> like this:</p>
+<pre><code class="hljs">node_modules
+└─ .registry.npmjs.org
+   ├─ bar/1.0.0/node_modules/bar
+   |  ├─ index.js
+   |  └─ package.json
+   └─ foo/1.0.0/node_modules/foo
+      ├─ index.js
+      └─ package.json
+</code></pre>
+<p>These are the only &quot;real files&quot; in <code>node_modules</code>. Once all the packages are hard linked to <code>node_modules</code>, symlinks are created to build the nested dependency tree structure.</p>
+<p>As you might have noticed, both packages are hard linked into a subfolder inside a <code>node_modules</code> folder (<code>foo/1.0.0/node_modules/foo</code>). This is needed to:</p>
+<ol>
+<li><strong>allow packages to require themselves.</strong> <code>foo</code> should be able to do <code>require('foo/package.json')</code>.</li>
+<li><strong>avoid circular symlinks.</strong> Dependencies of packages are placed in the same folder in which the dependent packages are. For Node.js it doesn't make a difference whether dependencies are inside the package's <code>node_modules</code> or in any other <code>node_modules</code> in the parent directories.</li>
+</ol>
+<p>The next stage of installation is symlinking dependencies. <code>bar</code> is going to be symlinked to the <code>foo/1.0.0/node_modules</code> folder:</p>
+<pre><code class="hljs">node_modules
+└─ .registry.npmjs.org
+   ├─ bar/1.0.0/node_modules/bar
+   └─ foo/1.0.0/node_modules
+      ├─ foo
+      └─ bar -&gt; ../../../bar/1.0.0/node_modules/bar
+</code></pre>
+<p><code>foo</code> is going to be symlinked to the root <code>node_modules</code> folder because <code>foo</code> is a dependency of the project:</p>
+<pre><code class="hljs">node_modules
+├─ foo -&gt; .registry.npmjs.org/foo/1.0.0/node_modules/foo
+└─ .registry.npmjs.org
+   ├─ bar/1.0.0/node_modules/bar
+   └─ foo/1.0.0/node_modules
+      ├─ foo
+      └─ bar -&gt; ../../../bar/1.0.0/node_modules/bar
+</code></pre>
+<p>This is a very simple example. However, the layout will stay flat in the file system regardless of the number of dependencies and the depth of the dependency tree.</p>
+<p>Let's add <code>qar@2.0.0</code> as a dependency of <code>bar</code> and <code>foo</code>. This is how the <code>node_modules</code> will look like:</p>
+<pre><code class="hljs">node_modules
+├─ foo -&gt; .registry.npmjs.org/foo/1.0.0/node_modules/foo
+└─ .registry.npmjs.org
+   ├─ qar/2.0.0/node_modules/qar
+   ├─ bar/1.0.0/node_modules
+   |  ├─ bar
+   |  └─ qar -&gt; ../../../qar/2.0.0/node_modules/qar
+   └─ foo/1.0.0/node_modules
+      ├─ foo
+      ├─ qar -&gt; ../../../qar/2.0.0/node_modules/qar
+      └─ bar -&gt; ../../../bar/1.0.0/node_modules/bar
+</code></pre>
+<p>As you can see, even though the depth of the tree is bigger (<code>foo &gt; bar &gt; qar</code>), the directory depth in the file system is still the same.</p>
+<p>This layout might look weird at first glance, but it is completely Node.js-compatible! When resolving modules, Node.js ignores symlinks. So when <code>bar</code> is required from <code>foo/1.0.0/node_modules/foo/index.js</code>, Node.js is not using <code>bar</code> from <code>foo/1.0.0/node_modules/bar</code>. <code>bar</code> is resolved to its real location: <code>bar/1.0.0/node_modules/bar</code>. As a consequence, <code>bar</code> can also resolve its dependencies which are in <code>bar/1.0.0/node_modules</code>.</p>
+<p>A great bonus of this layout is that only packages that are really in the dependencies are accessible. With flattened <code>node_modules</code>, all hoisted packages are accessible. To read more about why this is an advantage, see <a href="https://www.kochan.io/nodejs/pnpms-strictness-helps-to-avoid-silly-bugs.html">pnpm's strictness helps to avoid silly bugs</a>.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="about-package-store.html">← About the package store</a><a class="docs-next button" href="how-peers-are-resolved.html">How peers are resolved →</a></div></div></div></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/pnpm-light.svg" alt="pnpm" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/ru/installation.html">Getting Started</a></div><div><h5>Community</h5><a href="/ru/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/pnpm" target="_blank">Stack Overflow</a><a href="https://gitter.im/pnpm/pnpm">Project Chat</a><a href="https://twitter.com/pnpmjs" target="_blank">Twitter</a></div><div><h5>More</h5><a href="https://medium.com/pnpm">Blog</a><a href="https://github.com/pnpm/pnpm">GitHub</a><a class="github-button" href="https://github.com/pnpm/pnpm" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div></body></html>
