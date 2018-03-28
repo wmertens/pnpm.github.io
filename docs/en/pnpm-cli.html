@@ -8,7 +8,7 @@
             languagesDropDown.className = "hide";
           }
         });
-      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Usage</span></h2></div><div class="navGroups"><div class="navGroup navGroupActive"><h3>Introduction</h3><ul><li class="navListItem"><a class="navItem" href="/docs/en/motivation.html">Motivation</a></li><li class="navListItem"><a class="navItem" href="/docs/en/installation.html">Installation</a></li></ul></div><div class="navGroup navGroupActive"><h3>Usage</h3><ul><li class="navListItem navListItemActive"><a class="navItem navItemActive" href="/docs/en/pnpm-cli.html">pnpm CLI</a></li><li class="navListItem"><a class="navItem" href="/docs/en/pnpx-cli.html">pnpx CLI</a></li><li class="navListItem"><a class="navItem" href="/docs/en/configuring.html">Configuring</a></li><li class="navListItem"><a class="navItem" href="/docs/en/hooks.html">Hooks</a></li><li class="navListItem"><a class="navItem" href="/docs/en/aliases.html">Aliases</a></li></ul></div><div class="navGroup navGroupActive"><h3>Recipes</h3><ul><li class="navListItem"><a class="navItem" href="/docs/en/continuous-integration.html">Continuous Integration</a></li><li class="navListItem"><a class="navItem" href="/docs/en/workspace.html">Workspace</a></li></ul></div><div class="navGroup navGroupActive"><h3>Advanced</h3><ul><li class="navListItem"><a class="navItem" href="/docs/en/benchmark.html">Benchmark</a></li><li class="navListItem"><a class="navItem" href="/docs/en/limitations.html">Limitations</a></li><li class="navListItem"><a class="navItem" href="/docs/en/about-package-store.html">About the package store</a></li><li class="navListItem"><a class="navItem" href="/docs/en/symlinked-node-modules-structure.html">Symlinked `node_modules` structure</a></li><li class="navListItem"><a class="navItem" href="/docs/en/how-peers-are-resolved.html">How peers are resolved</a></li></ul></div></div></section></div><script>
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Usage</span></h2></div><div class="navGroups"><div class="navGroup navGroupActive"><h3>Introduction</h3><ul><li class="navListItem"><a class="navItem" href="/docs/en/motivation.html">Motivation</a></li><li class="navListItem"><a class="navItem" href="/docs/en/installation.html">Installation</a></li></ul></div><div class="navGroup navGroupActive"><h3>Usage</h3><ul><li class="navListItem navListItemActive"><a class="navItem navItemActive" href="/docs/en/pnpm-cli.html">pnpm CLI</a></li><li class="navListItem"><a class="navItem" href="/docs/en/pnpx-cli.html">pnpx CLI</a></li><li class="navListItem"><a class="navItem" href="/docs/en/configuring.html">Configuring</a></li><li class="navListItem"><a class="navItem" href="/docs/en/hooks.html">Hooks</a></li><li class="navListItem"><a class="navItem" href="/docs/en/aliases.html">Aliases</a></li></ul></div><div class="navGroup navGroupActive"><h3>CLI commands</h3><ul><li class="navListItem"><a class="navItem" href="/docs/en/pnpm-install.html">pnpm install</a></li><li class="navListItem"><a class="navItem" href="/docs/en/pnpm-install-pkg.html">pnpm install &lt;pkg&gt;</a></li><li class="navListItem"><a class="navItem" href="/docs/en/pnpm-dislink.html">pnpm dislink</a></li><li class="navListItem"><a class="navItem" href="/docs/en/pnpm-store.html">pnpm store</a></li><li class="navListItem"><a class="navItem" href="/docs/en/pnpm-recursive.html">pnpm recursive</a></li><li class="navListItem"><a class="navItem" href="/docs/en/pnpm-server.html">pnpm server</a></li></ul></div><div class="navGroup navGroupActive"><h3>Recipes</h3><ul><li class="navListItem"><a class="navItem" href="/docs/en/continuous-integration.html">Continuous Integration</a></li><li class="navListItem"><a class="navItem" href="/docs/en/workspace.html">Workspace</a></li></ul></div><div class="navGroup navGroupActive"><h3>Advanced</h3><ul><li class="navListItem"><a class="navItem" href="/docs/en/benchmark.html">Benchmark</a></li><li class="navListItem"><a class="navItem" href="/docs/en/limitations.html">Limitations</a></li><li class="navListItem"><a class="navItem" href="/docs/en/about-package-store.html">About the package store</a></li><li class="navListItem"><a class="navItem" href="/docs/en/symlinked-node-modules-structure.html">Symlinked `node_modules` structure</a></li><li class="navListItem"><a class="navItem" href="/docs/en/how-peers-are-resolved.html">How peers are resolved</a></li></ul></div></div></section></div><script>
           var toggler = document.getElementById('navToggler');
           var nav = document.getElementById('docsNav');
           toggler.onclick = function() {
@@ -32,118 +32,7 @@
 <li><code>help</code></li>
 </ul>
 <p>Also, pnpm has some custom commands.</p>
-<h2><a class="anchor" aria-hidden="true" id="dislink"></a><a href="#dislink" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>dislink</h2>
-<p>Unlinks a package. Like <code>yarn unlink</code> but pnpm re-installs the dependency
-after removing the external link.</p>
-<h2><a class="anchor" aria-hidden="true" id="store-status"></a><a href="#store-status" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>store status</h2>
-<p>Returns a 0 exit code if packages in the store are not modified, i.e. the
-content of the package is the same as it was at the time of unpacking.</p>
-<h2><a class="anchor" aria-hidden="true" id="store-prune"></a><a href="#store-prune" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>store prune</h2>
-<p>Removes unreferenced (extraneous, orphan) packages from the store.</p>
-<h2><a class="anchor" aria-hidden="true" id="server-start"></a><a href="#server-start" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>server start</h2>
-<p>Added in: v1.30.0</p>
-<blockquote>
-<p>Stability: Experimental</p>
-</blockquote>
-<p>Starts a server that does all interactions with the store.
-Other commands will delegate any store-related tasks to this server.</p>
-<p>Related configs:</p>
-<h3><a class="anchor" aria-hidden="true" id="background"></a><a href="#background" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>background</h3>
-<p>Added in: v1.30.0</p>
-<ul>
-<li>Default: <strong>false</strong></li>
-<li>Type: <strong>Boolean</strong></li>
-</ul>
-<p>Runs the server in the background.</p>
-<h3><a class="anchor" aria-hidden="true" id="protocol"></a><a href="#protocol" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>protocol</h3>
-<p>Added in: v1.30.0</p>
-<ul>
-<li>Default: <strong>auto</strong></li>
-<li>Type: <strong>auto</strong>, <strong>tcp</strong>, <strong>ipc</strong></li>
-</ul>
-<p>The communication protocol used by the server.
-When <strong>auto</strong> is used, <strong>ipc</strong> used on non-Windows servers and <strong>tcp</strong> on Windows.</p>
-<h3><a class="anchor" aria-hidden="true" id="port"></a><a href="#port" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>port</h3>
-<p>Added in: v1.30.0</p>
-<ul>
-<li>Default: <strong>5813</strong></li>
-<li>Type: <strong>port number</strong></li>
-</ul>
-<p>The port number to use, when TCP is used for communication.
-If port is specified and <strong>protocol</strong> is set to auto, <strong>tcp</strong> protocol is used.</p>
-<p>Other configs that are used by <code>pnpm server</code>: <strong>store</strong>, <strong>lock</strong>.</p>
-<h3><a class="anchor" aria-hidden="true" id="ignore-stop-requests"></a><a href="#ignore-stop-requests" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ignore-stop-requests</h3>
-<p>Added in: v1.30.0</p>
-<ul>
-<li>Default: <strong>false</strong></li>
-<li>Type: <strong>Boolean</strong></li>
-</ul>
-<p>Disallows stopping the server using <code>pnpm server stop</code>.</p>
-<h3><a class="anchor" aria-hidden="true" id="ignore-upload-requests"></a><a href="#ignore-upload-requests" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ignore-upload-requests</h3>
-<p>Added in: v1.31.0</p>
-<ul>
-<li>Default: <strong>false</strong></li>
-<li>Type: <strong>Boolean</strong></li>
-</ul>
-<p>Disallows creating new side effect cache during install.</p>
-<h2><a class="anchor" aria-hidden="true" id="server-stop"></a><a href="#server-stop" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>server stop</h2>
-<p>Added in: v1.30.0</p>
-<blockquote>
-<p>Stability: Experimental</p>
-</blockquote>
-<p>Stops the store server.</p>
-<h2><a class="anchor" aria-hidden="true" id="recursive-install"></a><a href="#recursive-install" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>recursive install</h2>
-<p>Added in: v1.24.0</p>
-<blockquote>
-<p>Stability: Experimental</p>
-</blockquote>
-<pre><code class="hljs">pnpm recursive <span class="hljs-string">[concurrency]</span> install <span class="hljs-string">[arguments]</span>
-</code></pre>
-<p>Concurrently runs install in all subdirectories with a <code>package.json</code> (excluding node_modules).</p>
-<p>Usage examples:</p>
-<pre><code class="hljs">pnpm recursive <span class="hljs-keyword">install</span>
-pnpm <span class="hljs-keyword">recursive</span> <span class="hljs-number">10</span> <span class="hljs-keyword">install</span> <span class="hljs-comment">--ignore-scripts</span>
-</code></pre>
-<h2><a class="anchor" aria-hidden="true" id="recursive-update"></a><a href="#recursive-update" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>recursive update</h2>
-<p>Added in: v1.24.0</p>
-<blockquote>
-<p>Stability: Experimental</p>
-</blockquote>
-<pre><code class="hljs">pnpm recursive <span class="hljs-string">[concurrency]</span> update <span class="hljs-string">[arguments]</span>
-</code></pre>
-<p>Concurrently runs update in all subdirectories with a <code>package.json</code> (excluding node_modules).</p>
-<p>Usage examples:</p>
-<pre><code class="hljs">pnpm recursive <span class="hljs-keyword">update</span>
-pnpm <span class="hljs-keyword">recursive</span> <span class="hljs-keyword">update</span> <span class="hljs-comment">--depth 100</span>
-</code></pre>
-<h2><a class="anchor" aria-hidden="true" id="recursive-link"></a><a href="#recursive-link" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>recursive link</h2>
-<p>Added in: v1.32.0</p>
-<blockquote>
-<p>Stability: Experimental</p>
-</blockquote>
-<pre><code class="hljs">pnpm recursive <span class="hljs-string">[concurrency]</span> link <span class="hljs-string">[arguments]</span>
-</code></pre>
-<p>Concurrently runs installation in all subdirectories with a <code>package.json</code> (excluding node_modules).
-If a package is available locally, the local version is linked.</p>
-<p>Usage examples:</p>
-<pre><code class="hljs">pnpm <span class="hljs-keyword">recursive</span> link
-pnpm <span class="hljs-keyword">recursive</span> link --ignore-scripts
-</code></pre>
-<h2><a class="anchor" aria-hidden="true" id="recursive-dislink"></a><a href="#recursive-dislink" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>recursive dislink</h2>
-<p>Added in: v1.32.0</p>
-<blockquote>
-<p>Stability: Experimental</p>
-</blockquote>
-<pre><code class="hljs">pnpm recursive <span class="hljs-string">[concurrency]</span> dislink <span class="hljs-string">[arguments]</span>
-</code></pre>
-<p>Removes links to local packages and reinstalls them from the registry.</p>
-<p>Usage examples:</p>
-<pre><code class="hljs"><span class="hljs-attribute">pnpm recursive dislink</span>
-</code></pre>
-<hr>
-<p>The rest of the commands pass through to npm.</p>
-<p>For using the programmatic API, use pnpm's engine: <a href="https://github.com/pnpm/supi">supi</a>.</p>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="installation.html">← Installation</a><a class="docs-next button" href="pnpx-cli.html">pnpx CLI →</a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#dislink">dislink</a></li><li><a href="#store-status">store status</a></li><li><a href="#store-prune">store prune</a></li><li><a href="#server-start">server start</a><ul class="toc-headings"><li><a href="#background">background</a></li><li><a href="#protocol">protocol</a></li><li><a href="#port">port</a></li><li><a href="#ignore-stop-requests">ignore-stop-requests</a></li><li><a href="#ignore-upload-requests">ignore-upload-requests</a></li></ul></li><li><a href="#server-stop">server stop</a></li><li><a href="#recursive-install">recursive install</a></li><li><a href="#recursive-update">recursive update</a></li><li><a href="#recursive-link">recursive link</a></li><li><a href="#recursive-dislink">recursive dislink</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/pnpm-light.svg" alt="pnpm" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/installation.html">Getting Started</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/pnpm" target="_blank">Stack Overflow</a><a href="https://gitter.im/pnpm/pnpm">Project Chat</a><a href="https://twitter.com/pnpmjs" target="_blank">Twitter</a></div><div><h5>More</h5><a href="https://medium.com/pnpm">Blog</a><a href="https://github.com/pnpm/pnpm">GitHub</a><a class="github-button" href="https://github.com/pnpm/pnpm" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="installation.html">← Installation</a><a class="docs-next button" href="pnpx-cli.html">pnpx CLI →</a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/pnpm-light.svg" alt="pnpm" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/installation.html">Getting Started</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/pnpm" target="_blank">Stack Overflow</a><a href="https://gitter.im/pnpm/pnpm">Project Chat</a><a href="https://twitter.com/pnpmjs" target="_blank">Twitter</a></div><div><h5>More</h5><a href="https://medium.com/pnpm">Blog</a><a href="https://github.com/pnpm/pnpm">GitHub</a><a class="github-button" href="https://github.com/pnpm/pnpm" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script>
               (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
               (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
               m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
