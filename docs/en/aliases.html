@@ -25,8 +25,8 @@ With aliases, you have a third option.</p>
 </code></pre>
 <p>No changes in code are needed. All the requires of <code>lodash</code> will import <code>awesome-lodash</code>.</p>
 <p>Sometimes you'll want to use two different versions of a package in your project. Easy:</p>
-<pre><code class="hljs">pnpm install lodash1<span class="hljs-variable">@npm</span><span class="hljs-symbol">:lodash</span><span class="hljs-variable">@1</span>
-pnpm install lodash2<span class="hljs-variable">@npm</span><span class="hljs-symbol">:lodash</span><span class="hljs-variable">@2</span>
+<pre><code class="hljs css sh">pnpm install lodash1@npm:lodash@1
+pnpm install lodash2@npm:lodash@2
 </code></pre>
 <p>Now you can require the first version of lodash via <code>require('lodash1')</code> and the second via <code>require('lodash2')</code>.</p>
 <p>This gets even more powerful when combined with hooks. Maybe you want to replace <code>lodash</code> with <code>awesome-lodash</code>
