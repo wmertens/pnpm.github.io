@@ -19,7 +19,7 @@
 <blockquote>
 <p>Stability: Experimental</p>
 </blockquote>
-<pre><code class="hljs css sh">pnpm recursive [concurrency] install [arguments]
+<pre><code class="hljs css sh">pnpm recursive install [arguments]
 </code></pre>
 <p>Concurrently runs install in all subdirectories with a <code>package.json</code> (excluding node_modules).</p>
 <p>Usage examples:</p>
@@ -31,7 +31,7 @@ pnpm recursive 10 install --ignore-scripts
 <blockquote>
 <p>Stability: Experimental</p>
 </blockquote>
-<pre><code class="hljs css sh">pnpm recursive [concurrency] update [arguments]
+<pre><code class="hljs css sh">pnpm recursive update [arguments]
 </code></pre>
 <p>Concurrently runs update in all subdirectories with a <code>package.json</code> (excluding node_modules).</p>
 <p>Usage examples:</p>
@@ -43,7 +43,7 @@ pnpm recursive update --depth 100
 <blockquote>
 <p>Stability: Experimental</p>
 </blockquote>
-<pre><code class="hljs css sh">pnpm recursive [concurrency] link [arguments]
+<pre><code class="hljs css sh">pnpm recursive link [arguments]
 </code></pre>
 <p>Concurrently runs installation in all subdirectories with a <code>package.json</code> (excluding node_modules).
 If a package is available locally, the local version is linked.</p>
@@ -56,7 +56,7 @@ pnpm recursive link --ignore-scripts
 <blockquote>
 <p>Stability: Experimental</p>
 </blockquote>
-<pre><code class="hljs css sh">pnpm recursive [concurrency] dislink [arguments]
+<pre><code class="hljs css sh">pnpm recursive dislink [arguments]
 </code></pre>
 <p>Removes links to local packages and reinstalls them from the registry.</p>
 <p>Usage examples:</p>
