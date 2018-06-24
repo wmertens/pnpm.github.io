@@ -24,7 +24,7 @@
           };
         </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/pnpm/pnpm.github.io/edit/source/docs/how-peers-are-resolved.md" target="_blank" rel="noreferrer noopener">Edit</a><h1>How peers are resolved</h1></header><article><div><span><p>One of the very great features of pnpm is that in one project, a specific version of a package will always have
 one set of dependencies. There is one exclusion from it though - packages with <a href="https://docs.npmjs.com/files/package.json#peerdependencies">peer dependencies</a>.</p>
-<p>Peer dependencies are resolved from dependencies installed higher in the dependency tree.
+<p>Peer dependencies are resolved from dependencies installed higher in the dependency graph.
 That means if <code>foo@1.0.0</code> has two peers (<code>bar@^1</code> and <code>baz@^1</code>) then it might have different sets of dependencies
 in the same project.</p>
 <pre><code class="hljs">-<span class="ruby"> foo-parent-<span class="hljs-number">1</span>
@@ -50,7 +50,7 @@ As a consequence, the Node.js module resolver algorithm will find the correct pe
 This is done to make it easier to make predictable and fast named (<code>pnpm i foo</code>) and general (<code>pnpm i</code>) installations.
 So if the project dependends on <code>bar@1.0.0</code>, the dependencies from our example will be grouped like this:</p>
 <p><img src="/img/how-peers-are-resolved/3.png" alt=""></p>
-<p><em>If a package has no peer dependencies but has dependencies with peers that are resolved higher in the tree</em>, then
+<p><em>If a package has no peer dependencies but has dependencies with peers that are resolved higher in the graph</em>, then
 that transitive package can appear in the project with different sets of dependencies. For instance, there's package <code>a@1.0.0</code>
 with a single dependency <code>framework@1.0.0</code>. <code>framework@1.0.0</code> has a peer dependency <code>plugin@^1</code>. <code>a@1.0.0</code> will never resolve the
 peers of <code>framework@1.0.0</code>, so it becomes dependent from the peers of <code>framework@1.0.0</code> as well.</p>
