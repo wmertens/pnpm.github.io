@@ -9,8 +9,10 @@
             </script><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/en"><img class="logo" src="/img/pnpm-no-name-with-frame.svg" alt="pnpm"/><h2 class="headerTitleWithLogo">pnpm</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/en/motivation.html" target="_self">Docs</a></li><li class=""><a href="/docs/en/faq.html" target="_self">FAQ</a></li><li class=""><a href="https://medium.com/pnpm" target="_self">Blog</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/de/workspace.html">Deutsch</a></li><li><a href="/docs/es-ES/workspace.html">Español</a></li><li><a href="/docs/hu/workspace.html">Magyar</a></li><li><a href="/docs/pt-BR/workspace.html">Português (Brasil)</a></li><li><a href="/docs/ru/workspace.html">Русский</a></li><li><a href="/docs/uk/workspace.html">Українська</a></li><li><a href="/docs/zh-CN/workspace.html">中文</a></li><li><a href="https://crowdin.com/project/pnpm" target="_blank" rel="noreferrer noopener">Help Translate</a></li></ul></div></li><script>
         const languagesMenuItem = document.getElementById("languages-menu");
         const languagesDropDown = document.getElementById("languages-dropdown");
-        languagesMenuItem.addEventListener("click", function(){
-          if(languagesDropDown.className == "hide") {
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
             languagesDropDown.className = "visible";
           } else {
             languagesDropDown.className = "hide";
@@ -50,4 +52,34 @@ From <code>v1.35.0</code>, you can control what directories are searched by pass
 <span class="hljs-bullet">  -</span> <span class="hljs-string">'!**/test/**'</span>
 </code></pre>
 <p><code>pnpm-workspace.yaml</code> should be in the root of the workspace.</p>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/en/continuous-integration.html">← Continuous Integration</a><a class="docs-next button" href="/docs/en/benchmark.html">Benchmark →</a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/pnpm-light.svg" alt="pnpm" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/installation.html">Getting Started</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/pnpm" target="_blank">Stack Overflow</a><a href="https://gitter.im/pnpm/pnpm">Project Chat</a><a href="https://twitter.com/pnpmjs" target="_blank">Twitter</a></div><div><h5>More</h5><a href="https://medium.com/pnpm">Blog</a><a href="https://github.com/pnpm/pnpm">GitHub</a><a class="github-button" href="https://github.com/pnpm/pnpm" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div></body></html>
+<h2><a class="anchor" aria-hidden="true" id="linking-packages-inside-a-workspace"></a><a href="#linking-packages-inside-a-workspace" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Linking packages inside a workspace</h2>
+<p>(This example will work with pnpm v2.11.0 or newer)</p>
+<p>When working inside a workspace, you want your dependencies to be linked from the monorepo but declared as regular dependencies.
+Let's suppose that you have this workspace:</p>
+<pre><code class="hljs">.
+├─ pnpm-workspace<span class="hljs-selector-class">.yaml</span>
+└─ packages
+   ├─ car
+   └─ garage
+</code></pre>
+<p>If you want to install <code>car</code> as a dependency of <code>garage</code>, you can
+run these commands:</p>
+<pre><code class="hljs css languages- bash"><span class="hljs-built_in">cd</span> packages/garage
+pnpm link car
+<span class="hljs-comment"># or</span>
+pnpm link car --prefix packages/garage
+</code></pre>
+<p>This command will not only link <code>car</code> to <code>garage/node_modules/car</code> (from <code>packages/car</code>) but also add <code>car</code> to the <code>package.json</code> of <code>garage</code>.</p>
+<p><code>car</code> will be added as a regular semver dependency of <code>garage</code>. So if the version of <code>car</code> in the workspace is <code>1.0.0</code> then this is
+how the <code>package.json</code> of <code>garage</code> will look like after running <code>pnpm link car</code>:</p>
+<pre><code class="hljs css languages- json">{
+  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"garage"</span>,
+  <span class="hljs-attr">"version"</span>: <span class="hljs-string">"1.0.0"</span>,
+  <span class="hljs-attr">"dependencies"</span>: {
+    <span class="hljs-attr">"car"</span>: <span class="hljs-string">"^1.0.0"</span>
+  }
+}
+</code></pre>
+<p>The link command respects the <code>--save-prod</code>, <code>--save-dev</code> and <code>--save-optional</code> flags, so you may run <code>pnpm link car --save-dev</code> in order
+to link <code>car</code> and add it as a dev dependency.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/en/continuous-integration.html">← Continuous Integration</a><a class="docs-next button" href="/docs/en/benchmark.html">Benchmark →</a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#linking-packages-inside-a-workspace">Linking packages inside a workspace</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/pnpm-light.svg" alt="pnpm" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/installation.html">Getting Started</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/pnpm" target="_blank">Stack Overflow</a><a href="https://gitter.im/pnpm/pnpm">Project Chat</a><a href="https://twitter.com/pnpmjs" target="_blank">Twitter</a></div><div><h5>More</h5><a href="https://medium.com/pnpm">Blog</a><a href="https://github.com/pnpm/pnpm">GitHub</a><a class="github-button" href="https://github.com/pnpm/pnpm" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div></body></html>
