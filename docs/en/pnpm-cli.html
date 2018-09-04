@@ -6,7 +6,7 @@
 
               ga('create', 'UA-91385296-1', 'auto');
               ga('send', 'pageview');
-            </script><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/en"><img class="logo" src="/img/pnpm-no-name-with-frame.svg" alt="pnpm"/><h2 class="headerTitleWithLogo">pnpm</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/en/motivation.html" target="_self">Docs</a></li><li class=""><a href="/docs/en/faq.html" target="_self">FAQ</a></li><li class=""><a href="https://medium.com/pnpm" target="_self">Blog</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/de/pnpm-cli.html">Deutsch</a></li><li><a href="/docs/es-ES/pnpm-cli.html">Español</a></li><li><a href="/docs/hu/pnpm-cli.html">Magyar</a></li><li><a href="/docs/pt-BR/pnpm-cli.html">Português (Brasil)</a></li><li><a href="/docs/ru/pnpm-cli.html">Русский</a></li><li><a href="/docs/uk/pnpm-cli.html">Українська</a></li><li><a href="/docs/zh-CN/pnpm-cli.html">中文</a></li><li><a href="https://crowdin.com/project/pnpm" target="_blank" rel="noreferrer noopener">Help Translate</a></li></ul></div></li><script>
+            </script><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/en"><img class="logo" src="/img/pnpm-no-name-with-frame.svg" alt="pnpm"/><h2 class="headerTitleWithLogo">pnpm</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/en/motivation.html" target="_self">Docs</a></li><li class=""><a href="/docs/en/faq.html" target="_self">FAQ</a></li><li class=""><a href="https://medium.com/pnpm" target="_self">Blog</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/de/pnpm-cli.html">Deutsch</a></li><li><a href="/docs/es-ES/pnpm-cli.html">Español</a></li><li><a href="/docs/hu/pnpm-cli.html">Magyar</a></li><li><a href="/docs/pt-BR/pnpm-cli.html">Português (Brasil)</a></li><li><a href="/docs/ru/pnpm-cli.html">Русский</a></li><li><a href="/docs/uk/pnpm-cli.html">Українська</a></li><li><a href="/docs/zh-CN/pnpm-cli.html">中文</a></li><li><a href="https://crowdin.com/project/pnpm" target="_blank" rel="noreferrer noopener">Help Translate</a></li></ul></div></li><script>
         const languagesMenuItem = document.getElementById("languages-menu");
         const languagesDropDown = document.getElementById("languages-dropdown");
         languagesMenuItem.addEventListener("click", function(event) {
@@ -34,6 +34,10 @@
                 var toggler = document.querySelector(togglerSelector);
                 var target = document.querySelector(targetSelector);
 
+                if (!toggler) {
+                  return;
+                }
+
                 toggler.onclick = function(event) {
                   event.preventDefault();
 
@@ -42,7 +46,7 @@
               }
             });
         </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/pnpm/pnpm.github.io/edit/source/docs/pnpm-cli.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 class="postHeaderTitle">pnpm CLI</h1></header><article><div><span><p>Just use pnpm in place of npm:</p>
-<pre><code class="hljs css languages- sh">pnpm install lodash
+<pre><code class="hljs css language-sh">pnpm install lodash
 </code></pre>
 <p>npm commands that are re-implemented in pnpm:</p>
 <ul>
@@ -57,6 +61,13 @@
 <li><code>rebuild</code></li>
 <li><code>root</code></li>
 <li><code>help</code></li>
+</ul>
+<p>Also, there are some commands unique to pnpm:</p>
+<ul>
+<li><a href="/docs/en/pnpm-recursive.html">recursive</a></li>
+<li><a href="/docs/en/pnpm-store.html">store</a></li>
+<li><a href="/docs/en/pnpm-server.html">server</a></li>
+<li><a href="/docs/en/pnpm-import.html">import</a></li>
 </ul>
 <p>The rest of the commands pass through to npm.</p>
 <p>For using the programmatic API, use pnpm's engine: <a href="https://github.com/pnpm/supi">supi</a>.</p>

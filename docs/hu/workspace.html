@@ -6,7 +6,7 @@
 
               ga('create', 'UA-91385296-1', 'auto');
               ga('send', 'pageview');
-            </script><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/hu"><img class="logo" src="/img/pnpm-no-name-with-frame.svg" alt="pnpm"/><h2 class="headerTitleWithLogo">pnpm</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/hu/motivation.html" target="_self">Docs</a></li><li class=""><a href="/docs/hu/faq.html" target="_self">FAQ</a></li><li class=""><a href="https://medium.com/pnpm" target="_self">Blog</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg"/>Magyar</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/en/workspace.html">English</a></li><li><a href="/docs/de/workspace.html">Deutsch</a></li><li><a href="/docs/es-ES/workspace.html">Español</a></li><li><a href="/docs/pt-BR/workspace.html">Português (Brasil)</a></li><li><a href="/docs/ru/workspace.html">Русский</a></li><li><a href="/docs/uk/workspace.html">Українська</a></li><li><a href="/docs/zh-CN/workspace.html">中文</a></li><li><a href="https://crowdin.com/project/pnpm" target="_blank" rel="noreferrer noopener">Help Translate</a></li></ul></div></li><script>
+            </script><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/hu"><img class="logo" src="/img/pnpm-no-name-with-frame.svg" alt="pnpm"/><h2 class="headerTitleWithLogo">pnpm</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/hu/motivation.html" target="_self">Docs</a></li><li class=""><a href="/docs/hu/faq.html" target="_self">FAQ</a></li><li class=""><a href="https://medium.com/pnpm" target="_self">Blog</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>Magyar</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/en/workspace.html">English</a></li><li><a href="/docs/de/workspace.html">Deutsch</a></li><li><a href="/docs/es-ES/workspace.html">Español</a></li><li><a href="/docs/pt-BR/workspace.html">Português (Brasil)</a></li><li><a href="/docs/ru/workspace.html">Русский</a></li><li><a href="/docs/uk/workspace.html">Українська</a></li><li><a href="/docs/zh-CN/workspace.html">中文</a></li><li><a href="https://crowdin.com/project/pnpm" target="_blank" rel="noreferrer noopener">Help Translate</a></li></ul></div></li><script>
         const languagesMenuItem = document.getElementById("languages-menu");
         const languagesDropDown = document.getElementById("languages-dropdown");
         languagesMenuItem.addEventListener("click", function(event) {
@@ -34,6 +34,10 @@
                 var toggler = document.querySelector(togglerSelector);
                 var target = document.querySelector(targetSelector);
 
+                if (!toggler) {
+                  return;
+                }
+
                 toggler.onclick = function(event) {
                   event.preventDefault();
 
@@ -44,7 +48,7 @@
         </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/pnpm/hu" target="_blank" rel="noreferrer noopener">Translate</a><h1 class="postHeaderTitle">Workspace</h1></header><article><div><span><p>pnpm supports concurrent actions in multi-package repositories (workspaces).</p>
 <p>By default, when you run the <a href="../usage/pnpm-cli.html#recursive-install"><code>pnpm recursive [action]</code></a> commands, all the directories are searched for packages (directories with <code>package.json</code> file). From <code>v1.35.0</code>, you can control what directories are searched by passing an array of globs to <code>packages</code> in <code>pnpm-workspace.yaml</code>.</p>
 <p>An example of a <code>pnpm-workspace.yaml</code>:</p>
-<pre><code class="hljs css languages- yaml"><span class="hljs-attr">packages:</span>
+<pre><code class="hljs css language-yaml"><span class="hljs-attr">packages:</span>
 <span class="hljs-bullet">  -</span> <span class="hljs-string">'packages/**'</span>
 <span class="hljs-bullet">  -</span> <span class="hljs-string">'components/**'</span>
 <span class="hljs-bullet">  -</span> <span class="hljs-string">'!**/test/**'</span>

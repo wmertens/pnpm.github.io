@@ -6,7 +6,7 @@
 
               ga('create', 'UA-91385296-1', 'auto');
               ga('send', 'pageview');
-            </script><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/en"><img class="logo" src="/img/pnpm-no-name-with-frame.svg" alt="pnpm"/><h2 class="headerTitleWithLogo">pnpm</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/en/motivation.html" target="_self">Docs</a></li><li class=""><a href="/docs/en/faq.html" target="_self">FAQ</a></li><li class=""><a href="https://medium.com/pnpm" target="_self">Blog</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/de/pnpm-recursive.html">Deutsch</a></li><li><a href="/docs/es-ES/pnpm-recursive.html">Español</a></li><li><a href="/docs/hu/pnpm-recursive.html">Magyar</a></li><li><a href="/docs/pt-BR/pnpm-recursive.html">Português (Brasil)</a></li><li><a href="/docs/ru/pnpm-recursive.html">Русский</a></li><li><a href="/docs/uk/pnpm-recursive.html">Українська</a></li><li><a href="/docs/zh-CN/pnpm-recursive.html">中文</a></li><li><a href="https://crowdin.com/project/pnpm" target="_blank" rel="noreferrer noopener">Help Translate</a></li></ul></div></li><script>
+            </script><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/en"><img class="logo" src="/img/pnpm-no-name-with-frame.svg" alt="pnpm"/><h2 class="headerTitleWithLogo">pnpm</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/en/motivation.html" target="_self">Docs</a></li><li class=""><a href="/docs/en/faq.html" target="_self">FAQ</a></li><li class=""><a href="https://medium.com/pnpm" target="_self">Blog</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/de/pnpm-recursive.html">Deutsch</a></li><li><a href="/docs/es-ES/pnpm-recursive.html">Español</a></li><li><a href="/docs/hu/pnpm-recursive.html">Magyar</a></li><li><a href="/docs/pt-BR/pnpm-recursive.html">Português (Brasil)</a></li><li><a href="/docs/ru/pnpm-recursive.html">Русский</a></li><li><a href="/docs/uk/pnpm-recursive.html">Українська</a></li><li><a href="/docs/zh-CN/pnpm-recursive.html">中文</a></li><li><a href="https://crowdin.com/project/pnpm" target="_blank" rel="noreferrer noopener">Help Translate</a></li></ul></div></li><script>
         const languagesMenuItem = document.getElementById("languages-menu");
         const languagesDropDown = document.getElementById("languages-dropdown");
         languagesMenuItem.addEventListener("click", function(event) {
@@ -33,6 +33,10 @@
               function createToggler(togglerSelector, targetSelector, className) {
                 var toggler = document.querySelector(togglerSelector);
                 var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
 
                 toggler.onclick = function(event) {
                   event.preventDefault();
@@ -66,7 +70,7 @@ This is very convinient in a multi-package repository.</p>
 <pre><code class="hljs"><span class="hljs-attr">link-workspace-packages</span> = <span class="hljs-literal">true</span>
 </code></pre>
 <p>Create a <a href="/docs/en/workspace.html">pnpm-workspace.yaml</a> file with the following content:</p>
-<pre><code class="hljs css languages- yaml"><span class="hljs-attr">packages:</span>
+<pre><code class="hljs css language-yaml"><span class="hljs-attr">packages:</span>
 <span class="hljs-bullet">  -</span> <span class="hljs-string">'**'</span>
 </code></pre>
 <p>Run <code>pnpm recursive install</code>.</p>
@@ -81,7 +85,7 @@ or by relation.</p>
 <p>To select an exact package, just specify its name (<code>@babel/core</code>) or use a pattern
 to select a set of packages (<code>@babel/*</code>).</p>
 <p>Usage examples:</p>
-<pre><code class="hljs css languages- sh">pnpm recursive install --filter @babel/core
+<pre><code class="hljs css language-sh">pnpm recursive install --filter @babel/core
 pnpm recursive install --filter @babel/*
 <span class="hljs-comment"># or</span>
 pnpm recursive install -- @babel/core
@@ -91,12 +95,12 @@ pnpm recursive install -- @babel/*
 <p>Added in: v2.13.0</p>
 <p>To select a package and its dependencies (direct and non-direct), suffix the package name with 3 dots: <code>&lt;package_name&gt;...</code>.
 For instance, the next command will run installation in all dependencies of <code>foo</code> and in <code>foo</code>:</p>
-<pre><code class="hljs css languages- sh">pnpm recursive install --filter foo...
+<pre><code class="hljs css language-sh">pnpm recursive install --filter foo...
 <span class="hljs-comment"># or</span>
 pnpm recursive install -- foo...
 </code></pre>
 <p>You may use a pattern to select a set of &quot;root&quot; packages:</p>
-<pre><code class="hljs css languages- sh">pnpm recursive install --filter @babel/preset-*...
+<pre><code class="hljs css language-sh">pnpm recursive install --filter @babel/preset-*...
 <span class="hljs-comment"># or</span>
 pnpm recursive install -- @babel/preset-*...
 </code></pre>
@@ -104,13 +108,13 @@ pnpm recursive install -- @babel/preset-*...
 <p>Added in: 2.14.0</p>
 <p>To select a package and its dependent packages (direct and non-direct), prefix the package name with 3 dots: <code>...&lt;package_name&gt;</code>.
 For instance, the next command will run installation in all dependents of <code>foo</code> and in <code>foo</code>:</p>
-<pre><code class="hljs css languages- sh">pnpm recursive install --filter ...foo
+<pre><code class="hljs css language-sh">pnpm recursive install --filter ...foo
 <span class="hljs-comment"># or</span>
 pnpm recursive install -- ...foo
 </code></pre>
 <p>When packages in the workspace are filtered, every package is taken that matches at least one of
 the selectors. You can use as many filters as you want:</p>
-<pre><code class="hljs css languages- sh">pnpm recursive install --filter ...foo --filter bar --filter qar...
+<pre><code class="hljs css language-sh">pnpm recursive install --filter ...foo --filter bar --filter qar...
 <span class="hljs-comment"># or</span>
 pnpm recursive install -- ...foo bar qar...
 </code></pre>
@@ -141,94 +145,94 @@ pnpm recursive install -- ...foo bar qar...
 </ul>
 <p>When <code>true</code>, packages are sorted topologically (dependencies before dependents). Pass <code>--no-sort</code> to disable.</p>
 <p>Usage examples:</p>
-<pre><code class="hljs css languages- sh">pnpm recursive <span class="hljs-built_in">test</span> --no-sort
+<pre><code class="hljs css language-sh">pnpm recursive <span class="hljs-built_in">test</span> --no-sort
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="pnpm-recursive-install"></a><a href="#pnpm-recursive-install" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>pnpm recursive install</h2>
 <p>Added in: v1.24.0</p>
-<pre><code class="hljs css languages- sh">pnpm recursive install [arguments]
+<pre><code class="hljs css language-sh">pnpm recursive install [arguments]
 </code></pre>
 <p>Concurrently runs install in all subdirectories with a <code>package.json</code> (excluding node_modules).</p>
 <p>Usage examples:</p>
-<pre><code class="hljs css languages- sh">pnpm recursive install
+<pre><code class="hljs css language-sh">pnpm recursive install
 pnpm recursive install --ignore-scripts
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="pnpm-recursive-update"></a><a href="#pnpm-recursive-update" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>pnpm recursive update</h2>
 <p>Added in: v1.24.0</p>
-<pre><code class="hljs css languages- sh">pnpm recursive update [arguments]
+<pre><code class="hljs css language-sh">pnpm recursive update [arguments]
 </code></pre>
 <p>Concurrently runs update in all subdirectories with a <code>package.json</code> (excluding node_modules).</p>
 <p>Usage examples:</p>
-<pre><code class="hljs css languages- sh">pnpm recursive update
+<pre><code class="hljs css language-sh">pnpm recursive update
 pnpm recursive update --depth 100
 <span class="hljs-comment"># update typescript to the latest version in every package</span>
 pnpm recursive update typescript@latest
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="pnpm-recursive-uninstall"></a><a href="#pnpm-recursive-uninstall" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>pnpm recursive uninstall</h2>
 <p>Added in: v2.10.0</p>
-<pre><code class="hljs css languages- sh">pnpm recursive uninstall [&lt;@scope&gt;/]&lt;pkg&gt;...
+<pre><code class="hljs css language-sh">pnpm recursive uninstall [&lt;@scope&gt;/]&lt;pkg&gt;...
 </code></pre>
 <p>Uninstall a dependency from each package</p>
 <p>Usage examples:</p>
-<pre><code class="hljs css languages- sh">pnpm recursive uninstall webpack
+<pre><code class="hljs css language-sh">pnpm recursive uninstall webpack
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="pnpm-recursive-dislink"></a><a href="#pnpm-recursive-dislink" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>pnpm recursive dislink</h2>
 <p>Added in: v1.32.0</p>
 <p>An alias of <code>recursive unlink</code> from v2.0.0</p>
-<pre><code class="hljs css languages- sh">pnpm recursive dislink [arguments]
+<pre><code class="hljs css language-sh">pnpm recursive dislink [arguments]
 </code></pre>
 <p>Removes links to local packages and reinstalls them from the registry.</p>
 <p>Usage examples:</p>
-<pre><code class="hljs css languages- sh">pnpm recursive dislink
+<pre><code class="hljs css language-sh">pnpm recursive dislink
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="pnpm-recursive-outdated"></a><a href="#pnpm-recursive-outdated" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>pnpm recursive outdated</h2>
 <p>Added in: v2.2.0</p>
-<pre><code class="hljs css languages- sh">pnpm recursive outdated [[&lt;@scope&gt;/]&lt;pkg&gt; ...]
+<pre><code class="hljs css language-sh">pnpm recursive outdated [[&lt;@scope&gt;/]&lt;pkg&gt; ...]
 </code></pre>
 <p>Check for outdated packages in every project of the multi-package repo.</p>
 <p>Usage examples:</p>
-<pre><code class="hljs css languages- sh">pnpm recursive outdated
+<pre><code class="hljs css language-sh">pnpm recursive outdated
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="pnpm-recursive-list"></a><a href="#pnpm-recursive-list" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>pnpm recursive list</h2>
 <p>Added in: v2.2.0</p>
-<pre><code class="hljs css languages- sh">pnpm recursive list [[&lt;@scope&gt;/]&lt;pkg&gt; ...]
+<pre><code class="hljs css language-sh">pnpm recursive list [[&lt;@scope&gt;/]&lt;pkg&gt; ...]
 </code></pre>
 <p>List packages in each project of the multi-package repo.
 Accepts the same arguments and flags as the regular <code>pnpm list</code> command.</p>
 <p>Usage examples:</p>
-<pre><code class="hljs css languages- sh">pnpm recursive list
+<pre><code class="hljs css language-sh">pnpm recursive list
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="pnpm-recursive-run"></a><a href="#pnpm-recursive-run" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>pnpm recursive run</h2>
 <p>Added in: v2.3.0</p>
-<pre><code class="hljs css languages- sh">pnpm recursive run &lt;<span class="hljs-built_in">command</span>&gt; [-- &lt;args&gt;...]
+<pre><code class="hljs css language-sh">pnpm recursive run &lt;<span class="hljs-built_in">command</span>&gt; [-- &lt;args&gt;...]
 </code></pre>
 <p>This runs an arbitrary command from each package's &quot;scripts&quot; object.
 If a package doesn't have the command, it is skipped.
 If none of the packages have the command, the command fails.</p>
 <p>Usage examples:</p>
-<pre><code class="hljs css languages- sh">pnpm recursive run build
+<pre><code class="hljs css language-sh">pnpm recursive run build
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="pnpm-recursive-test"></a><a href="#pnpm-recursive-test" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>pnpm recursive test</h2>
 <p>Added in: v2.3.0</p>
-<pre><code class="hljs css languages- sh">pnpm recursive <span class="hljs-built_in">test</span> [-- &lt;args&gt;...]
+<pre><code class="hljs css language-sh">pnpm recursive <span class="hljs-built_in">test</span> [-- &lt;args&gt;...]
 </code></pre>
 <p>This runs each package's &quot;test&quot; script, if one was provided.</p>
 <p>Usage examples:</p>
-<pre><code class="hljs css languages- sh">pnpm recursive <span class="hljs-built_in">test</span>
+<pre><code class="hljs css language-sh">pnpm recursive <span class="hljs-built_in">test</span>
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="pnpm-recursive-rebuild"></a><a href="#pnpm-recursive-rebuild" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>pnpm recursive rebuild</h2>
 <p>Added in: v2.4.0</p>
-<pre><code class="hljs css languages- sh">pnpm recursive rebuild [[&lt;@scope&gt;/&lt;name&gt;]...]
+<pre><code class="hljs css language-sh">pnpm recursive rebuild [[&lt;@scope&gt;/&lt;name&gt;]...]
 </code></pre>
 <p>This command runs the <strong>pnpm build</strong> command in every package of the multi-package repo.</p>
 <p>Usage examples:</p>
-<pre><code class="hljs css languages- sh">pnpm recursive rebuild
+<pre><code class="hljs css language-sh">pnpm recursive rebuild
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="pnpm-recursive-exec"></a><a href="#pnpm-recursive-exec" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>pnpm recursive exec</h2>
 <p>Added in: v2.9.0</p>
-<pre><code class="hljs css languages- sh">pnpm recursive <span class="hljs-built_in">exec</span> -- &lt;<span class="hljs-built_in">command</span>&gt; [args...]
+<pre><code class="hljs css language-sh">pnpm recursive <span class="hljs-built_in">exec</span> -- &lt;<span class="hljs-built_in">command</span>&gt; [args...]
 </code></pre>
 <p>This command runs a command in each package of the multi-package repo.</p>
 <p>Usage examples:</p>
-<pre><code class="hljs css languages- sh">pnpm recursive <span class="hljs-built_in">exec</span> -- rm -rf node_modules
+<pre><code class="hljs css language-sh">pnpm recursive <span class="hljs-built_in">exec</span> -- rm -rf node_modules
 </code></pre>
 </span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/en/pnpm-store.html">← pnpm store</a><a class="docs-next button" href="/docs/en/pnpm-server.html">pnpm server →</a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#tl-dr">tl;dr</a></li><li><a href="#options">Options</a><ul class="toc-headings"><li><a href="#link-workspace-packages">link-workspace-packages</a></li><li><a href="#package-selector-filter-package-selector">-- ..., --filter</a></li><li><a href="#workspace-concurrency">workspace-concurrency</a></li><li><a href="#bail">bail</a></li><li><a href="#sort">sort</a></li></ul></li><li><a href="#pnpm-recursive-install">pnpm recursive install</a></li><li><a href="#pnpm-recursive-update">pnpm recursive update</a></li><li><a href="#pnpm-recursive-uninstall">pnpm recursive uninstall</a></li><li><a href="#pnpm-recursive-dislink">pnpm recursive dislink</a></li><li><a href="#pnpm-recursive-outdated">pnpm recursive outdated</a></li><li><a href="#pnpm-recursive-list">pnpm recursive list</a></li><li><a href="#pnpm-recursive-run">pnpm recursive run</a></li><li><a href="#pnpm-recursive-test">pnpm recursive test</a></li><li><a href="#pnpm-recursive-rebuild">pnpm recursive rebuild</a></li><li><a href="#pnpm-recursive-exec">pnpm recursive exec</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/pnpm-light.svg" alt="pnpm" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/installation.html">Getting Started</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/pnpm" target="_blank">Stack Overflow</a><a href="https://gitter.im/pnpm/pnpm">Project Chat</a><a href="https://twitter.com/pnpmjs" target="_blank">Twitter</a></div><div><h5>More</h5><a href="https://medium.com/pnpm">Blog</a><a href="https://github.com/pnpm/pnpm">GitHub</a><a class="github-button" href="https://github.com/pnpm/pnpm" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div></body></html>
