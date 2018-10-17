@@ -45,7 +45,7 @@
                 };
               }
             });
-        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/pnpm/pnpm.github.io/edit/source/docs/symlinked-node-modules-structure.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 class="postHeaderTitle">Symlinked `node_modules` structure</h1></header><article><div><span><blockquote>
+        </script></nav></div><div class="container mainContainer docMainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/pnpm/pnpm.github.io/edit/source/docs/symlinked-node-modules-structure.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 class="postHeaderTitle">Symlinked `node_modules` structure</h1></header><article><div><span><blockquote>
 <p>This article only describes how pnpm's <code>node_modules</code> are structured when there are no packages with peer dependencies.
 For the more complex scenario of dependencies with peers, see <a href="/docs/en/how-peers-are-resolved.html">How peers are resolved</a>.</p>
 </blockquote>
@@ -54,12 +54,12 @@ For the more complex scenario of dependencies with peers, see <a href="/docs/en/
 Let's say you install <code>foo@1.0.0</code> that depends on <code>bar@1.0.0</code>. pnpm will hard link both packages to <code>node_modules</code> like this:</p>
 <pre><code class="hljs">node_modules
 └─ .registry.npmjs.org
-   ├─ bar<span class="hljs-regexp">/1.0.0/</span>node_modules/bar
+   ├─ bar/<span class="hljs-number">1.0</span><span class="hljs-number">.0</span>/node_modules/bar
    |  ├─ index.js
-   |  └─ <span class="hljs-keyword">package</span>.json
-   └─ foo<span class="hljs-regexp">/1.0.0/</span>node_modules/foo
+   |  └─ package.json
+   └─ foo/<span class="hljs-number">1.0</span><span class="hljs-number">.0</span>/node_modules/foo
       ├─ index.js
-      └─ <span class="hljs-keyword">package</span>.json
+      └─ package.json
 </code></pre>
 <p>These are the only &quot;real files&quot; in <code>node_modules</code>. Once all the packages are hard linked to <code>node_modules</code>, symlinks are
 created to build the nested dependency graph structure.</p>
@@ -92,16 +92,16 @@ For Node.js it doesn't make a difference whether dependencies are inside the pac
 and the depth of the dependency graph.</p>
 <p>Let's add <code>qar@2.0.0</code> as a dependency of <code>bar</code> and <code>foo</code>. This is how the <code>node_modules</code> will look like:</p>
 <pre><code class="hljs">node_modules
-├─ foo -&gt; .registry.npmjs.org<span class="hljs-regexp">/foo/</span><span class="hljs-number">1.0</span><span class="hljs-number">.0</span><span class="hljs-regexp">/node_modules/</span>foo
+├─ foo -&gt; .registry.npmjs.org/foo/<span class="hljs-number">1.0</span><span class="hljs-number">.0</span>/node_modules/foo
 └─ .registry.npmjs.org
-   ├─ qar<span class="hljs-regexp">/2.0.0/</span>node_modules/qar
-   ├─ bar<span class="hljs-regexp">/1.0.0/</span>node_modules
+   ├─ qar/<span class="hljs-number">2.0</span><span class="hljs-number">.0</span>/node_modules/qar
+   ├─ bar/<span class="hljs-number">1.0</span><span class="hljs-number">.0</span>/node_modules
    |  ├─ bar
-   |  └─ qar -&gt; ..<span class="hljs-regexp">/../</span>..<span class="hljs-regexp">/qar/</span><span class="hljs-number">2.0</span><span class="hljs-number">.0</span><span class="hljs-regexp">/node_modules/</span>qar
-   └─ foo<span class="hljs-regexp">/1.0.0/</span>node_modules
+   |  └─ qar -&gt; ../../../qar/<span class="hljs-number">2.0</span><span class="hljs-number">.0</span>/node_modules/qar
+   └─ foo/<span class="hljs-number">1.0</span><span class="hljs-number">.0</span>/node_modules
       ├─ foo
-      ├─ qar -&gt; ..<span class="hljs-regexp">/../</span>..<span class="hljs-regexp">/qar/</span><span class="hljs-number">2.0</span><span class="hljs-number">.0</span><span class="hljs-regexp">/node_modules/</span>qar
-      └─ bar -&gt; ..<span class="hljs-regexp">/../</span>..<span class="hljs-regexp">/bar/</span><span class="hljs-number">1.0</span><span class="hljs-number">.0</span><span class="hljs-regexp">/node_modules/</span>bar
+      ├─ qar -&gt; ../../../qar/<span class="hljs-number">2.0</span><span class="hljs-number">.0</span>/node_modules/qar
+      └─ bar -&gt; ../../../bar/<span class="hljs-number">1.0</span><span class="hljs-number">.0</span>/node_modules/bar
 </code></pre>
 <p>As you can see, even though the depth of the graph is bigger (<code>foo &gt; bar &gt; qar</code>), the directory depth in the file system is still the same.</p>
 <p>This layout might look weird at first glance, but it is completely Node.js-compatible! When resolving modules, Node.js ignores symlinks.
@@ -110,4 +110,4 @@ So when <code>bar</code> is required from <code>foo/1.0.0/node_modules/foo/index
 which are in <code>bar/1.0.0/node_modules</code>.</p>
 <p>A great bonus of this layout is that only packages that are really in the dependencies are accessible. With flattened <code>node_modules</code>, all hoisted
 packages are accessible. To read more about why this is an advantage, see <a href="https://www.kochan.io/nodejs/pnpms-strictness-helps-to-avoid-silly-bugs.html">pnpm's strictness helps to avoid silly bugs</a>.</p>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/en/about-package-store.html">← About the package store</a><a class="docs-next button" href="/docs/en/how-peers-are-resolved.html">How peers are resolved →</a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/pnpm-light.svg" alt="pnpm" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/installation.html">Getting Started</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/pnpm" target="_blank">Stack Overflow</a><a href="https://gitter.im/pnpm/pnpm">Project Chat</a><a href="https://twitter.com/pnpmjs" target="_blank">Twitter</a></div><div><h5>More</h5><a href="https://medium.com/pnpm">Blog</a><a href="https://github.com/pnpm/pnpm">GitHub</a><a class="github-button" href="https://github.com/pnpm/pnpm" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div></body></html>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/en/about-package-store.html"><span class="arrow-prev">← </span><span>Previous</span></a><a class="docs-next button" href="/docs/en/how-peers-are-resolved.html"><span>Next</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav docOnPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/pnpm-light.svg" alt="pnpm" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/installation.html">Getting Started</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/pnpm" target="_blank">Stack Overflow</a><a href="https://gitter.im/pnpm/pnpm">Project Chat</a><a href="https://twitter.com/pnpmjs" target="_blank">Twitter</a></div><div><h5>More</h5><a href="https://medium.com/pnpm">Blog</a><a href="https://github.com/pnpm/pnpm">GitHub</a><a class="github-button" href="https://github.com/pnpm/pnpm" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div></body></html>

@@ -45,20 +45,20 @@
                 };
               }
             });
-        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/pnpm/pnpm.github.io/edit/source/docs/how-peers-are-resolved.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 class="postHeaderTitle">How peers are resolved</h1></header><article><div><span><p>One of the very great features of pnpm is that in one project, a specific version of a package will always have
+        </script></nav></div><div class="container mainContainer docMainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/pnpm/pnpm.github.io/edit/source/docs/how-peers-are-resolved.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 class="postHeaderTitle">How peers are resolved</h1></header><article><div><span><p>One of the very great features of pnpm is that in one project, a specific version of a package will always have
 one set of dependencies. There is one exclusion from it though - packages with <a href="https://docs.npmjs.com/files/package.json#peerdependencies">peer dependencies</a>.</p>
 <p>Peer dependencies are resolved from dependencies installed higher in the dependency graph.
 That means if <code>foo@1.0.0</code> has two peers (<code>bar@^1</code> and <code>baz@^1</code>) then it might have different sets of dependencies
 in the same project.</p>
-<pre><code class="hljs">-<span class="ruby"> foo-parent-<span class="hljs-number">1</span>
-</span>  -<span class="ruby"> bar@1.<span class="hljs-number">0</span>.<span class="hljs-number">0</span>
-</span>  -<span class="ruby"> baz@1.<span class="hljs-number">0</span>.<span class="hljs-number">0</span>
-</span>  -<span class="ruby"> foo@1.<span class="hljs-number">0</span>.<span class="hljs-number">0</span>
-</span>-<span class="ruby"> foo-parent-<span class="hljs-number">2</span>
-</span>  -<span class="ruby"> bar@1.<span class="hljs-number">0</span>.<span class="hljs-number">0</span>
-</span>  -<span class="ruby"> baz@1.<span class="hljs-number">1.0</span>
-</span>  -<span class="ruby"> foo@1.<span class="hljs-number">0</span>.<span class="hljs-number">0</span>
-</span></code></pre>
+<pre><code class="hljs">- foo-parent<span class="hljs-number">-1</span>
+  - <span class="hljs-symbol">bar@</span><span class="hljs-number">1.0</span><span class="hljs-number">.0</span>
+  - <span class="hljs-symbol">baz@</span><span class="hljs-number">1.0</span><span class="hljs-number">.0</span>
+  - <span class="hljs-symbol">foo@</span><span class="hljs-number">1.0</span><span class="hljs-number">.0</span>
+- foo-parent<span class="hljs-number">-2</span>
+  - <span class="hljs-symbol">bar@</span><span class="hljs-number">1.0</span><span class="hljs-number">.0</span>
+  - <span class="hljs-symbol">baz@</span><span class="hljs-number">1.1</span><span class="hljs-number">.0</span>
+  - <span class="hljs-symbol">foo@</span><span class="hljs-number">1.0</span><span class="hljs-number">.0</span>
+</code></pre>
 <p>In the example above, <code>foo@1.0.0</code> is installed for <code>foo-parent-1</code> and <code>foo-parent-2</code>. Both packages have <code>bar</code> and <code>baz</code>as well, but
 they depend on different versions of <code>baz</code>. As a result, <code>foo@1.0.0</code> has two different sets of dependencies: one with <code>baz@1.0.0</code>
 and the other one with <code>baz@1.1.0</code>. In order to support these use cases, pnpm has to hard link <code>foo@1.0.0</code> as many times as many different dependency sets it has.</p>
@@ -80,4 +80,4 @@ peers of <code>framework@1.0.0</code>, so it becomes dependent from the peers of
 <p>Here's how it will look like in <code>node_modules/.registry.npmjs.org</code>, in case if <code>a@1.0.0</code> will need to appear twice in the project's
 <code>node_modules</code>, once resolved with <code>plugin@1.0.0</code> and once with <code>plugin@1.1.0</code>.</p>
 <p><img src="/img/how-peers-are-resolved/4.png" alt=""></p>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/en/symlinked-node-modules-structure.html">← Symlinked `node_modules` structure</a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/pnpm-light.svg" alt="pnpm" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/installation.html">Getting Started</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/pnpm" target="_blank">Stack Overflow</a><a href="https://gitter.im/pnpm/pnpm">Project Chat</a><a href="https://twitter.com/pnpmjs" target="_blank">Twitter</a></div><div><h5>More</h5><a href="https://medium.com/pnpm">Blog</a><a href="https://github.com/pnpm/pnpm">GitHub</a><a class="github-button" href="https://github.com/pnpm/pnpm" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div></body></html>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/en/symlinked-node-modules-structure.html"><span class="arrow-prev">← </span><span>Previous</span></a></div></div></div><nav class="onPageNav docOnPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/pnpm-light.svg" alt="pnpm" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/installation.html">Getting Started</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/pnpm" target="_blank">Stack Overflow</a><a href="https://gitter.im/pnpm/pnpm">Project Chat</a><a href="https://twitter.com/pnpmjs" target="_blank">Twitter</a></div><div><h5>More</h5><a href="https://medium.com/pnpm">Blog</a><a href="https://github.com/pnpm/pnpm">GitHub</a><a class="github-button" href="https://github.com/pnpm/pnpm" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div></body></html>
