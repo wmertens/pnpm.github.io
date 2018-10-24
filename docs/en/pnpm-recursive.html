@@ -76,14 +76,20 @@ This is very convinient in a multi-package repository.</p>
 <p>Run <code>pnpm recursive install</code>.</p>
 <h3><a class="anchor" aria-hidden="true" id="shared-workspace-shrinkwrap"></a><a href="#shared-workspace-shrinkwrap" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>shared-workspace-shrinkwrap</h3>
 <p>Added in: v2.17.0</p>
-<p>Creates a single <code>shrinkwrap.yaml</code> file in the root of the workspace.
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>When <code>true</code>, pnpm creates a single <code>shrinkwrap.yaml</code> file in the root of the workspace (in the directory that contains the <code>pnpm-workspace.yaml</code> file).
 A shared shrinkwrap also means that all dependencies of all workspace packages will be in a single <code>node_modules</code>.</p>
 <p>Advantages of this option:</p>
 <ul>
 <li>every dependency is a singleton</li>
-<li>faster installations in a monorepo</li>
-<li>less changes in code reviews</li>
+<li>faster installations in a multi-package repository</li>
+<li>fewer changes in code reviews</li>
 </ul>
+<p><strong>NOTE:</strong> even though all the dependencies will be hard linked into the root <code>node_modules</code>, packages will have access only to those dependencies
+that are declared in their <code>package.json</code>. So pnpm's strictness is preserved.</p>
 <h3><a class="anchor" aria-hidden="true" id="lt-package-selector-filter-lt-package-selector"></a><a href="#lt-package-selector-filter-lt-package-selector" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>-- &lt;package_selector&gt;..., --filter &lt;package_selector&gt;</h3>
 <p>Added in: v2.13.0</p>
 <p>Ability to pass selectors after <code>--</code> added in v2.15.0</p>
