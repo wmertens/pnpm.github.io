@@ -1,0 +1,316 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>pnpm install · pnpm</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;p&gt;O &lt;code&gt;pnpm install&lt;/code&gt; é usado para instalar todas as dependências de um projeto.&lt;/p&gt;
+"/><meta name="docsearch:version" content="next"/><meta name="docsearch:language" content="pt-BR"/><meta property="og:title" content="pnpm install · pnpm"/><meta property="og:type" content="website"/><meta property="og:url" content="https://pnpm.js.org/index.html"/><meta property="og:description" content="&lt;p&gt;O &lt;code&gt;pnpm install&lt;/code&gt; é usado para instalar todas as dependências de um projeto.&lt;/p&gt;
+"/><meta property="og:image" content="https://pnpm.js.org/img/ogimage.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://pnpm.js.org/img/ogimage.png"/><link rel="shortcut icon" href="/img/favicon.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-91385296-1', 'auto');
+              ga('send', 'pageview');
+            </script><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/pt-BR"><img class="logo" src="/img/pnpm-no-name-with-frame.svg" alt="pnpm"/><h2 class="headerTitleWithLogo">pnpm</h2></a><a href="/pt-BR/versions.html"><h3>next</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/pt-BR/next/motivation.html" target="_self">Documentação</a></li><li class=""><a href="/docs/pt-BR/next/faq.html" target="_self">FAQ</a></li><li class=""><a href="https://medium.com/pnpm" target="_self">Blog</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>Português (Brasil)</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/en/next/pnpm-install.html">English</a></li><li><a href="/docs/de/next/pnpm-install.html">Deutsch</a></li><li><a href="/docs/es-ES/next/pnpm-install.html">Español</a></li><li><a href="/docs/hu/next/pnpm-install.html">Magyar</a></li><li><a href="/docs/ru/next/pnpm-install.html">Русский</a></li><li><a href="/docs/uk/next/pnpm-install.html">Українська</a></li><li><a href="/docs/zh-CN/next/pnpm-install.html">中文</a></li><li><a href="https://crowdin.com/project/pnpm" target="_blank" rel="noreferrer noopener">Ajudar a traduzir</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>CLI comandos</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Introdução</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/pt-BR/next/motivation.html">Motivação</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/next/installation.html">Instalação</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Uso</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/pt-BR/next/pnpm-cli.html">pnpm CLI</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/next/pnpx-cli.html">pnpx CLI</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/next/configuring.html">Configurando</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/next/hooks.html">Hooks</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/next/aliases.html">Aliases</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">CLI comandos</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/pt-BR/next/pnpm-import.html">pnpm import</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/next/pnpm-install-pkg.html">pnpm install &lt;pkg&gt;</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/pt-BR/next/pnpm-install.html">pnpm install</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/next/pnpm-publish.html">pnpm publish</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/next/pnpm-recursive.html">pnpm recursive</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/next/pnpm-run.html">pnpm run</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/next/pnpm-server.html">pnpm server</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/next/pnpm-store.html">pnpm store</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/next/pnpm-unlink.html">pnpm unlink</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Recipes</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/pt-BR/next/continuous-integration.html">Integração Contínua</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/next/workspace.html">Área de trabalho</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Avançado</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/pt-BR/next/logos.html">Logos</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/next/benchmark.html">Benchmark</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/next/limitations.html">Limitações</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/next/about-package-store.html">Sobre a loja de pacotes</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/next/symlinked-node-modules-structure.html">Symlinked `node_modules` estrutura</a></li><li class="navListItem"><a class="navItem" href="/docs/pt-BR/next/how-peers-are-resolved.html">Como os pares são resolvidos</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/pnpm/pt-BR" target="_blank" rel="noreferrer noopener">Translate</a><h1 class="postHeaderTitle">pnpm install</h1></header><article><div><span><p>O <code>pnpm install</code> é usado para instalar todas as dependências de um projeto.</p>
+<p><img src="/img/demos/pnpm-install.svg" alt=""></p>
+<h2><a class="anchor" aria-hidden="true" id="tl-dr"></a><a href="#tl-dr" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>tl; dr</h2>
+<table>
+<thead>
+<tr><th>Comando</th><th>Significado</th></tr>
+</thead>
+<tbody>
+<tr><td>pnpm i --offline`</td><td>sem pedidos de rede</td></tr>
+<tr><td><code>pnpm i --frozen-lockfile</code></td><td><code>pnpm-lock.yaml</code> não é atualizado</td></tr>
+<tr><td>pnpm i --prefer-frozen-lockfile`</td><td>quando possível, <code>pnpm-lock.yaml</code> não é atualizado</td></tr>
+</tbody>
+</table>
+<h2><a class="anchor" aria-hidden="true" id="loja"></a><a href="#loja" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>loja</h2>
+<ul>
+<li>Padrão: <strong>~/pnpm-store</strong></li>
+<li>Tipo: <strong>caminho</strong></li>
+</ul>
+<p>O local onde todos os pacotes são salvos no disco.</p>
+<p>A loja deve estar sempre no mesmo disco em que a instalação está acontecendo. Então, haverá um armazenamento por disco.
+Se houver um diretório inicial no disco atual, o armazenamento será criado em <code>&lt;home dir&gt; /. Pnpm-store</code>. Se não há
+homedir no disco, a loja é criada na raiz. Por exemplo, se a instalação está acontecendo no disco <code>D</code>
+então a loja será criada em <code>D: \. pnpm-store</code>.</p>
+<p>É possível definir uma loja a partir de um disco diferente, mas, nesse caso, o pnpm copia, e não vincula, pacotes da loja.
+Links rígidos são possíveis somente dentro de um sistema de arquivos.</p>
+<h2><a class="anchor" aria-hidden="true" id="desligada"></a><a href="#desligada" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>desligada</h2>
+<ul>
+<li>Padrão: <strong>false</strong></li>
+<li>Tipo: <strong>Boolean</strong></li>
+</ul>
+<p>Se for verdade, o pnpm usará apenas pacotes já disponíveis na loja.
+Se um pacote não for encontrado localmente, a instalação falhará.</p>
+<h2><a class="anchor" aria-hidden="true" id="prefer-offline"></a><a href="#prefer-offline" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>prefer-offline</h2>
+<p>Adicionado em: v1.28.0</p>
+<ul>
+<li>Padrão: <strong>false</strong></li>
+<li>Tipo: <strong>Boolean</strong></li>
+</ul>
+<p>Se for verdadeiro, o staleness verificará se há dados em cache que serão ignorados, mas os dados ausentes serão solicitados ao servidor.
+Para forçar o modo offline completo, use <code>--offline</code>.</p>
+<h2><a class="anchor" aria-hidden="true" id="network-concurrency"></a><a href="#network-concurrency" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>network-concurrency</h2>
+<ul>
+<li>Padrão: <strong>16</strong></li>
+<li>Tipo: <strong>Número</strong></li>
+</ul>
+<p>Controla o número máximo de solicitações HTTP que podem ser feitas simultaneamente.</p>
+<h2><a class="anchor" aria-hidden="true" id="child-concurrency"></a><a href="#child-concurrency" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>child-concurrency</h2>
+<ul>
+<li>Padrão: <strong>5</strong></li>
+<li>Tipo: <strong>Número</strong></li>
+</ul>
+<p>Controla o número de processos filhos executados paralelamente para construir módulos de nó.</p>
+<h2><a class="anchor" aria-hidden="true" id="lock"></a><a href="#lock" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>lock</h2>
+<ul>
+<li>Padrão: <strong>true</strong></li>
+<li>Tipo: <strong>Boolean</strong></li>
+</ul>
+<p>Perigoso! Se false, a loja não está bloqueada. Isso significa que várias instalações usando o mesmo
+loja pode funcionar simultaneamente.</p>
+<p>Pode ser passado através de uma opção CLI. <code>--no-lock</code> para configurá-lo para false. Por exemplo: <code>pnpm install --no-lock</code>.</p>
+<blockquote>
+<p>Se você tiver problemas semelhantes aos descritos em [# 594] (<a href="https://github.com/pnpm/pnpm/issues/594">https://github.com/pnpm/pnpm/issues/594</a>), use esta opção para desativar o bloqueio.
+Enquanto isso, tentaremos encontrar uma solução que faça o trabalho de bloqueio para todos.</p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="ignore-scripts"></a><a href="#ignore-scripts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ignore-scripts</h2>
+<ul>
+<li>Padrão: <strong>false</strong></li>
+<li>Tipo: <strong>Boolean</strong></li>
+</ul>
+<p>Não execute nenhum script definido no projeto <code>package.json</code> e suas dependências.</p>
+<h2><a class="anchor" aria-hidden="true" id="ignore-pnpmfile"></a><a href="#ignore-pnpmfile" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ignore-pnpmfile</h2>
+<p>Adicionado em: v1.25.0</p>
+<ul>
+<li>Padrão: <strong>false</strong></li>
+<li>Tipo: <strong>Boolean</strong></li>
+</ul>
+<p><code>pnpmfile.js</code> será ignorado. Útil junto com <code>--ignore-scripts</code> quando você quer ter certeza de que
+nenhum script é executado durante a instalação.</p>
+<h2><a class="anchor" aria-hidden="true" id="pnpmfile"></a><a href="#pnpmfile" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>pnpmfile</h2>
+<p>Adicionado em: v1.39.0</p>
+<ul>
+<li>Padrão: <strong>pnpmfile.js</strong></li>
+<li>Tipo: <strong>path</strong></li>
+<li>Exemplo: <strong>.pnpm/pnpmfile.js</strong></li>
+</ul>
+<p>A localização do arquivo pnpm local.</p>
+<h2><a class="anchor" aria-hidden="true" id="production-true-false"></a><a href="#production-true-false" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>production[=true|false]</h2>
+<ul>
+<li>Padrão: <strong>false</strong></li>
+<li>Tipo: <strong>Boolean</strong></li>
+</ul>
+<p>O pnpm não instalará nenhum pacote listado em <code>devDependencies</code> se a variável de ambiente<code>NODE_ENV</code> estiver configurada para produção. Use esse sinalizador para instruir o pnpm a ignorar <code>NODE_ENV</code> e obter seu status de produção ou não desse sinalizador.</p>
+<blockquote>
+<p>Notas: <code>--production</code> é o mesmo que<code>--production = true</code>. <code>--prod</code> é um pseudônimo de<code>--production</code>.</p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="global-pnpmfile"></a><a href="#global-pnpmfile" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>global-pnpmfile</h2>
+<p>Adicionado em: v1.39.0</p>
+<ul>
+<li>Padrão: <strong>null</strong></li>
+<li>Tipo: <strong>path</strong></li>
+<li>Exemplo: <strong>~/.pnpm/global_pnpmfile.js</strong></li>
+</ul>
+<p>A localização de um arquivo global pnpm. Um pnpmfile global é usado por todos os projetos durante a instalação.</p>
+<p><strong>NOTA:</strong> Recomenda-se usar arquivos pnpm locais. Use somente um arquivo pnpm global, se você usar o pnpm em projetos
+que não usam o pnpm como gerenciador de pacotes principal.</p>
+<h2><a class="anchor" aria-hidden="true" id="independent-leaves"></a><a href="#independent-leaves" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>independent-leaves</h2>
+<ul>
+<li>Padrão: <strong>false</strong></li>
+<li>Tipo: <strong>Boolean</strong></li>
+</ul>
+<p>Se true, as ligações simbólicas dependem diretamente do armazenamento global. Dependências foliares são
+pacotes que não possuem dependências próprias. Definir essa configuração como <code>true</code> pode interromper alguns pacotes
+que dependem da localização, mas dá uma média de <strong>8% de melhoria na velocidade de instalação</strong>.</p>
+<h2><a class="anchor" aria-hidden="true" id="verify-store-integrity"></a><a href="#verify-store-integrity" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>verify-store-integrity</h2>
+<p>Adicionado em: v1.8.0</p>
+<ul>
+<li>Padrão: <strong>true</strong></li>
+<li>Tipo: <strong>Boolean</strong></li>
+</ul>
+<p>Se false, não verifica se os pacotes na loja foram modificados.</p>
+<h2><a class="anchor" aria-hidden="true" id="package-import-method"></a><a href="#package-import-method" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>package-import-method</h2>
+<p>Adicionado em: v1.25.0</p>
+<ul>
+<li>Padrão: <strong>auto</strong></li>
+<li>Tipo: <strong>auto</strong>, <strong>hardlink</strong>, <strong>cópia</strong>, <strong>reflink</strong></li>
+</ul>
+<p>Controla a maneira como os pacotes são importados da loja.</p>
+<ul>
+<li><strong>auto</strong> - tente vincular os pacotes da loja. Se falhar, recuar para copiar</li>
+<li><strong>hardlink</strong> - pacotes de hardlink da loja</li>
+<li><strong>copy</strong> - copie os pacotes da loja</li>
+<li><strong>reflink</strong> - pacotes de reflink (aka copy-on-write) da loja</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="lockfile"></a><a href="#lockfile" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>lockfile</h2>
+<p>Adicionado em: v1.32.0 (inicialmente chamado <code>shrinkwrap</code>)</p>
+<ul>
+<li>Padrão: <strong>true</strong></li>
+<li>Tipo: <strong>Boolean</strong></li>
+</ul>
+<p>Quando definido como 'false', o pnpm não irá ler ou gerar um arquivo <code>pnpm-lock.yaml</code>.</p>
+<h2><a class="anchor" aria-hidden="true" id="lockfile-only"></a><a href="#lockfile-only" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>lockfile-only</h2>
+<p>Adicionado em: v1.26.0 (inicialmente chamado <code>shrinkwrap-only</code>)</p>
+<ul>
+<li>Padrão: <strong>false</strong></li>
+<li>Tipo: <strong>Boolean</strong></li>
+</ul>
+<p>Quando usado, somente atualiza <code>pnpm-lock.yaml</code> e<code>package.json</code> em vez de verificar <code>node_modules</code> e baixar dependências.</p>
+<h2><a class="anchor" aria-hidden="true" id="frozen-lockfile"></a><a href="#frozen-lockfile" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>frozen-lockfile</h2>
+<p>Adicionado em: v1.37.1 (inicialmente chamado <code>frozen-shrinkwrap</code>)</p>
+<ul>
+<li>Padrão: <strong>false</strong></li>
+<li>Tipo: <strong>Boolean</strong></li>
+</ul>
+<p>Se <code>true</code>, o pnpm não gera um arquivo de trava e falha se uma atualização for necessária.</p>
+<h2><a class="anchor" aria-hidden="true" id="prefer-frozen-lockfile"></a><a href="#prefer-frozen-lockfile" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>prefer-frozen-lockfile</h2>
+<p>Adicionado em: v1.37.1 (inicialmente chamado <code>prefer-frozen-shrinkwrap</code>)</p>
+<ul>
+<li>Padrão: <strong>true</strong> (da v1.38.0)</li>
+<li>Tipo: <strong>Boolean</strong></li>
+</ul>
+<p>Quando <code>true</code> e o disponível<code>pnpm-lock.yaml</code> satisfaz o <code>package.json</code>
+então uma instalação sem cabeça é executada. Uma instalação sem cabeça é mais rápida que uma instalação normal
+porque pula a resolução de dependências e a resolução de pares.</p>
+<h1><a class="anchor" aria-hidden="true" id="reporter"></a><a href="#reporter" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a># repórter</h1>
+<ul>
+<li>Padrão:
+<ul>
+<li>Para stdout TTY: <strong>padrão</strong></li>
+<li>Para stdout não TTY: <strong>append-only</strong></li>
+</ul></li>
+<li>Tipo: <strong>padrão</strong>, <strong>append-only</strong>, <strong>ndjson</strong>, ** silencioso **</li>
+</ul>
+<p>Permite escolher o repórter que imprimirá informações sobre
+o progresso da instalação.</p>
+<ul>
+<li><strong>silencioso</strong> - nenhuma saída é registrada no console, exceto erros fatais</li>
+<li><strong>padrão</strong> - o repórter padrão (default) quando o stdout é TTY</li>
+<li><strong>append-only</strong> (adicionado na v1.29.1) - a saída é sempre anexada ao final. Nenhuma manipulação de cursor é executada</li>
+<li><strong>ndjson</strong> - o repórter mais detalhado. Imprime todos os registros no formato <a href="http://ndjson.org/">ndjson</a></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="use-store-server"></a><a href="#use-store-server" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>use-store-server</h2>
+<p>Adicionado em: v1.30.0</p>
+<ul>
+<li>Padrão: <strong>false</strong></li>
+<li>Tipo: <strong>Boolean</strong></li>
+</ul>
+<p>Inicia um servidor de armazenamento em segundo plano. O servidor de armazenamento continuará em execução após a conclusão da instalação.
+Para parar o servidor da loja, execute o comando <code>pnpm server stop</code></p>
+<h2><a class="anchor" aria-hidden="true" id="use-running-store-server"></a><a href="#use-running-store-server" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>use-running-store-server</h2>
+<p>Adicionado em: v2.5.0</p>
+<ul>
+<li>Padrão: <strong>false</strong></li>
+<li>Tipo: <strong>Boolean</strong></li>
+</ul>
+<p>Apenas permite a instalação com um servidor de armazenamento. Se nenhum servidor de armazenamento estiver em execução, a instalação falhará.</p>
+<h2><a class="anchor" aria-hidden="true" id="side-effects-cache"></a><a href="#side-effects-cache" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>side-effects-cache</h2>
+<p>Adicionado em: v1.31.0</p>
+<blockquote>
+<p>Estabilidade: Experimental</p>
+</blockquote>
+<ul>
+<li>Padrão: <strong>false</strong></li>
+<li>Tipo: <strong>Boolean</strong></li>
+</ul>
+<p>Use e armazene em cache os resultados dos ganchos de instalação (pré / pós).</p>
+<h2><a class="anchor" aria-hidden="true" id="side-effects-cache-readonly"></a><a href="#side-effects-cache-readonly" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>side-effects-cache-readonly</h2>
+<p>Adicionado em: v1.31.0</p>
+<blockquote>
+<p>Estabilidade: Experimental</p>
+</blockquote>
+<ul>
+<li>Padrão: <strong>false</strong></li>
+<li>Tipo: <strong>Boolean</strong></li>
+</ul>
+<p>Use apenas o cache de efeitos colaterais, se presente, não o crie para novos pacotes.</p>
+<h2><a class="anchor" aria-hidden="true" id="shamefully-flatten"></a><a href="#shamefully-flatten" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>shamefully-flatten</h2>
+<p>Adicionado em: v1.34.0</p>
+<ul>
+<li>Padrão: <strong>false</strong></li>
+<li>Tipo: <strong>Boolean</strong></li>
+</ul>
+<p>Se for verdade, o pnpm cria um flat node_modules que se parece quase com um node_modules criado por npm ou Yarn.
+Por favor use esta opção apenas quando não houver outra maneira de fazer um projeto funcionar com o pnpm.
+O estrito <code>node_modules</code> criado pelo pnpm deve sempre funcionar, se isso não acontecer, provavelmente uma dependência é
+faltando em <code>package.json</code>. Use essa configuração apenas como uma correção temporária.</p>
+<h2><a class="anchor" aria-hidden="true" id="strict-peer-dependencies"></a><a href="#strict-peer-dependencies" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>strict-peer-dependencies</h2>
+<p>Adicionado em: v2.15.0</p>
+<ul>
+<li>Padrão: <strong>false</strong></li>
+<li>Tipo: <strong>Boolean</strong></li>
+</ul>
+<p>Se true, os comandos falham em dependências de peer ausentes ou inválidas.</p>
+<h2><a class="anchor" aria-hidden="true" id="estrategia-de-resolucão"></a><a href="#estrategia-de-resolucão" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>estratégia de resolução</h2>
+<p>Adicionado em: 3.1.0</p>
+<ul>
+<li>Padrão: <strong>rápido</strong></li>
+<li>Tipo: <strong>rápido</strong>, <strong>menos dependências</strong></li>
+</ul>
+<p>Define a estratégia de resoluções usada durante a instalação.</p>
+<ul>
+<li><strong>fast</strong> - a estratégia de resolução padrão. A velocidade é preferida à deduplicação</li>
+<li><strong>menos dependências</strong> - as dependências já instaladas são preferidas mesmo se versões mais novas satisfizerem um intervalo</li>
+</ul>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/pt-BR/next/pnpm-install-pkg.html"><span class="arrow-prev">← </span><span>pnpm install &lt;pkg&gt;</span></a><a class="docs-next button" href="/docs/pt-BR/next/pnpm-publish.html"><span>pnpm publish</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#tl-dr">tl; dr</a></li><li><a href="#loja">loja</a></li><li><a href="#desligada">desligada</a></li><li><a href="#prefer-offline">prefer-offline</a></li><li><a href="#network-concurrency">network-concurrency</a></li><li><a href="#child-concurrency">child-concurrency</a></li><li><a href="#lock">lock</a></li><li><a href="#ignore-scripts">ignore-scripts</a></li><li><a href="#ignore-pnpmfile">ignore-pnpmfile</a></li><li><a href="#pnpmfile">pnpmfile</a></li><li><a href="#production-true-false">production[=true|false]</a></li><li><a href="#global-pnpmfile">global-pnpmfile</a></li><li><a href="#independent-leaves">independent-leaves</a></li><li><a href="#verify-store-integrity">verify-store-integrity</a></li><li><a href="#package-import-method">package-import-method</a></li><li><a href="#lockfile">lockfile</a></li><li><a href="#lockfile-only">lockfile-only</a></li><li><a href="#frozen-lockfile">frozen-lockfile</a></li><li><a href="#prefer-frozen-lockfile">prefer-frozen-lockfile</a></li><li><a href="#use-store-server">use-store-server</a></li><li><a href="#use-running-store-server">use-running-store-server</a></li><li><a href="#side-effects-cache">side-effects-cache</a></li><li><a href="#side-effects-cache-readonly">side-effects-cache-readonly</a></li><li><a href="#shamefully-flatten">shamefully-flatten</a></li><li><a href="#strict-peer-dependencies">strict-peer-dependencies</a></li><li><a href="#estrategia-de-resolucão">estratégia de resolução</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/pnpm-light.svg" alt="pnpm" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/pt-BR/installation.html">Getting Started</a></div><div><h5>Community</h5><a href="/pt-BR/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/pnpm" target="_blank">Stack Overflow</a><a href="https://gitter.im/pnpm/pnpm">Project Chat</a><a href="https://twitter.com/pnpmjs" target="_blank">Twitter</a></div><div><h5>More</h5><a href="https://medium.com/pnpm">Blog</a><a href="https://github.com/pnpm/pnpm">GitHub</a><a class="github-button" href="https://github.com/pnpm/pnpm" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div></body></html>
