@@ -1,0 +1,111 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>pnpm store · pnpm</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;p&gt;Commands related to the &lt;a href=&quot;/docs/en/3.5/about-package-store.html&quot;&gt;pnpm package store&lt;/a&gt;.&lt;/p&gt;
+"/><meta name="docsearch:version" content="3.5"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="pnpm store · pnpm"/><meta property="og:type" content="website"/><meta property="og:url" content="https://pnpm.js.org/index.html"/><meta property="og:description" content="&lt;p&gt;Commands related to the &lt;a href=&quot;/docs/en/3.5/about-package-store.html&quot;&gt;pnpm package store&lt;/a&gt;.&lt;/p&gt;
+"/><meta property="og:image" content="https://pnpm.js.org/img/ogimage.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://pnpm.js.org/img/ogimage.png"/><link rel="shortcut icon" href="/img/favicon.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-91385296-1', 'auto');
+              ga('send', 'pageview');
+            </script><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/en"><img class="logo" src="/img/pnpm-no-name-with-frame.svg" alt="pnpm"/><h2 class="headerTitleWithLogo">pnpm</h2></a><a href="/en/versions.html"><h3>3.5</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/en/3.5/motivation.html" target="_self">Docs</a></li><li class=""><a href="/docs/en/3.5/faq.html" target="_self">FAQ</a></li><li class=""><a href="https://medium.com/pnpm" target="_self">Blog</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/de/3.5/pnpm-store.html">Deutsch</a></li><li><a href="/docs/es-ES/3.5/pnpm-store.html">Español</a></li><li><a href="/docs/hu/3.5/pnpm-store.html">Magyar</a></li><li><a href="/docs/pt-BR/3.5/pnpm-store.html">Português (Brasil)</a></li><li><a href="/docs/ru/3.5/pnpm-store.html">Русский</a></li><li><a href="/docs/uk/3.5/pnpm-store.html">Українська</a></li><li><a href="/docs/zh-CN/3.5/pnpm-store.html">中文</a></li><li><a href="https://crowdin.com/project/pnpm" target="_blank" rel="noreferrer noopener">Help Translate</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>CLI commands</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Introduction</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/en/3.5/motivation.html">Motivation</a></li><li class="navListItem"><a class="navItem" href="/docs/en/3.5/installation.html">Installation</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Usage</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/en/3.5/pnpm-cli.html">pnpm CLI</a></li><li class="navListItem"><a class="navItem" href="/docs/en/3.5/pnpx-cli.html">pnpx CLI</a></li><li class="navListItem"><a class="navItem" href="/docs/en/3.5/configuring.html">Configuring</a></li><li class="navListItem"><a class="navItem" href="/docs/en/3.5/hooks.html">Hooks</a></li><li class="navListItem"><a class="navItem" href="/docs/en/3.5/aliases.html">Aliases</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">CLI commands</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/en/3.5/pnpm-import.html">pnpm import</a></li><li class="navListItem"><a class="navItem" href="/docs/en/3.5/pnpm-install-pkg.html">pnpm install &lt;pkg&gt;</a></li><li class="navListItem"><a class="navItem" href="/docs/en/3.5/pnpm-install.html">pnpm install</a></li><li class="navListItem"><a class="navItem" href="/docs/en/3.5/pnpm-publish.html">pnpm publish</a></li><li class="navListItem"><a class="navItem" href="/docs/en/3.5/pnpm-recursive.html">pnpm recursive</a></li><li class="navListItem"><a class="navItem" href="/docs/en/3.5/pnpm-run.html">pnpm run</a></li><li class="navListItem"><a class="navItem" href="/docs/en/3.5/pnpm-server.html">pnpm server</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/en/3.5/pnpm-store.html">pnpm store</a></li><li class="navListItem"><a class="navItem" href="/docs/en/3.5/pnpm-unlink.html">pnpm unlink</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Recipes</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/en/3.5/continuous-integration.html">Continuous Integration</a></li><li class="navListItem"><a class="navItem" href="/docs/en/3.5/workspace.html">Workspace</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Advanced</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/en/3.5/logos.html">Logos</a></li><li class="navListItem"><a class="navItem" href="/docs/en/3.5/benchmark.html">Benchmark</a></li><li class="navListItem"><a class="navItem" href="/docs/en/3.5/limitations.html">Limitations</a></li><li class="navListItem"><a class="navItem" href="/docs/en/3.5/about-package-store.html">About the package store</a></li><li class="navListItem"><a class="navItem" href="/docs/en/3.5/symlinked-node-modules-structure.html">Symlinked `node_modules` structure</a></li><li class="navListItem"><a class="navItem" href="/docs/en/3.5/how-peers-are-resolved.html">How peers are resolved</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/pnpm/pnpm.github.io/edit/source/docs/pnpm-store.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 class="postHeaderTitle">pnpm store</h1></header><article><div><span><p>Commands related to the <a href="/docs/en/3.5/about-package-store.html">pnpm package store</a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="pnpm-store-status"></a><a href="#pnpm-store-status" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>pnpm store status</h2>
+<pre><code class="hljs css language-sh">pnpm store status
+</code></pre>
+<p>Checks for modified packages in the store.</p>
+<p>Returns exit code 0 if the content of the package is the same as it was at the time of unpacking.</p>
+<h2><a class="anchor" aria-hidden="true" id="pnpm-store-add"></a><a href="#pnpm-store-add" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>pnpm store add</h2>
+<p>Added in: v2.12.0</p>
+<pre><code class="hljs css language-sh">pnpm store add [&lt;@scope&gt;/]&lt;pkg&gt;...
+</code></pre>
+<p>Adds new packages to the pnpm store directly.
+Does not modify any projects or files outside the store.</p>
+<p>Usage examples:</p>
+<pre><code class="hljs css language-sh">pnpm store add express@4 typescript@2
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="pnpm-store-usages"></a><a href="#pnpm-store-usages" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>pnpm store usages</h2>
+<p>Added in: v2.21.0</p>
+<pre><code class="hljs css language-sh">pnpm store usages [&lt;@scope&gt;/]&lt;pkg&gt;...
+</code></pre>
+<p>Lists all pnpm projects on the current filesystem that depend on the specified packages in the store.</p>
+<p>Usage examples:</p>
+<pre><code class="hljs css language-sh">pnpm store usages flatmap-stream
+pnpm store usages is-odd@3.0.0 is-even@2.0.0
+pnpm store usages @babel/core ansi-regex
+</code></pre>
+<blockquote>
+<p>Note that this command might be slow for very large stores.
+We are working on improving performance.</p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="pnpm-store-prune"></a><a href="#pnpm-store-prune" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>pnpm store prune</h2>
+<pre><code class="hljs css language-sh">pnpm store prune
+</code></pre>
+<p>Removes unreferenced (extraneous, orphan) packages from the store.</p>
+<p>Pruning the store is not harmful, but might slow down future installations.</p>
+<p>Please read <a href="/docs/en/3.5/faq.html#what-does-pnpm-store-prune-do-is-it-harmful">the FAQ</a> for more information on unreferenced packages and <code>pnpm store prune</code> best practices.</p>
+<blockquote>
+<p>This command is prohibited when a <a href="/docs/en/3.5/pnpm-server.html">store server</a> is running.</p>
+</blockquote>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/en/3.5/pnpm-server.html"><span class="arrow-prev">← </span><span>pnpm server</span></a><a class="docs-next button" href="/docs/en/3.5/pnpm-unlink.html"><span>pnpm unlink</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#pnpm-store-status">pnpm store status</a></li><li><a href="#pnpm-store-add">pnpm store add</a></li><li><a href="#pnpm-store-usages">pnpm store usages</a></li><li><a href="#pnpm-store-prune">pnpm store prune</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/pnpm-light.svg" alt="pnpm" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/installation.html">Getting Started</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/pnpm" target="_blank">Stack Overflow</a><a href="https://gitter.im/pnpm/pnpm">Project Chat</a><a href="https://twitter.com/pnpmjs" target="_blank">Twitter</a></div><div><h5>More</h5><a href="https://medium.com/pnpm">Blog</a><a href="https://github.com/pnpm/pnpm">GitHub</a><a class="github-button" href="https://github.com/pnpm/pnpm" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div></body></html>
