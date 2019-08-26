@@ -1,0 +1,304 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>pnpm recursive · pnpm</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## tl; dr"/><meta name="docsearch:version" content="3.1.0"/><meta name="docsearch:language" content="pt-BR"/><meta property="og:title" content="pnpm recursive · pnpm"/><meta property="og:type" content="website"/><meta property="og:url" content="https://pnpm.js.org/"/><meta property="og:description" content="## tl; dr"/><meta property="og:image" content="https://pnpm.js.org/img/ogimage.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://pnpm.js.org/img/ogimage.png"/><link rel="shortcut icon" href="/img/favicon.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-91385296-1', 'auto');
+              ga('send', 'pageview');
+            </script><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/pt-BR"><img class="logo" src="/img/pnpm-no-name-with-frame.svg" alt="pnpm"/><h2 class="headerTitleWithLogo">pnpm</h2></a><a href="/pt-BR/versions"><h3>3.1.0</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/pt-BR/3.1.0/motivation" target="_self">Documentação</a></li><li class=""><a href="/pt-BR/3.1.0/faq" target="_self">FAQ</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><li class=""><a href="https://medium.com/pnpm" target="_self">Blog</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>Português (Brasil)</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/en/3.1.0/pnpm-recursive">English</a></li><li><a href="/de/3.1.0/pnpm-recursive">Deutsch</a></li><li><a href="/es-ES/3.1.0/pnpm-recursive">Español</a></li><li><a href="/hu/3.1.0/pnpm-recursive">Magyar</a></li><li><a href="/ru/3.1.0/pnpm-recursive">Русский</a></li><li><a href="/uk/3.1.0/pnpm-recursive">Українська</a></li><li><a href="/zh-CN/3.1.0/pnpm-recursive">中文</a></li><li><a href="https://crowdin.com/project/pnpm" target="_blank" rel="noreferrer noopener">Ajudar a traduzir</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>CLI comandos</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Introdução</h3><ul class=""><li class="navListItem"><a class="navItem" href="/pt-BR/3.1.0/motivation">Motivação</a></li><li class="navListItem"><a class="navItem" href="/pt-BR/3.1.0/installation">Instalação</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Uso</h3><ul class=""><li class="navListItem"><a class="navItem" href="/pt-BR/3.1.0/pnpm-cli">pnpm CLI</a></li><li class="navListItem"><a class="navItem" href="/pt-BR/3.1.0/pnpx-cli">pnpx CLI</a></li><li class="navListItem"><a class="navItem" href="/pt-BR/3.1.0/configuring">Configurando</a></li><li class="navListItem"><a class="navItem" href="/pt-BR/3.1.0/hooks">Hooks</a></li><li class="navListItem"><a class="navItem" href="/pt-BR/3.1.0/aliases">Aliases</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">CLI comandos</h3><ul class=""><li class="navListItem"><a class="navItem" href="/pt-BR/3.1.0/pnpm-install">pnpm install</a></li><li class="navListItem"><a class="navItem" href="/pt-BR/3.1.0/pnpm-install-pkg">pnpm install &lt;pkg&gt;</a></li><li class="navListItem"><a class="navItem" href="/pt-BR/3.1.0/pnpm-unlink">pnpm unlink</a></li><li class="navListItem"><a class="navItem" href="/pt-BR/3.1.0/pnpm-store">pnpm store</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/pt-BR/3.1.0/pnpm-recursive">pnpm recursive</a></li><li class="navListItem"><a class="navItem" href="/pt-BR/3.1.0/pnpm-server">pnpm server</a></li><li class="navListItem"><a class="navItem" href="/pt-BR/3.1.0/pnpm-import">pnpm import</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Recipes</h3><ul class=""><li class="navListItem"><a class="navItem" href="/pt-BR/3.1.0/continuous-integration">Integração Contínua</a></li><li class="navListItem"><a class="navItem" href="/pt-BR/3.1.0/workspace">Área de trabalho</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Avançado</h3><ul class=""><li class="navListItem"><a class="navItem" href="/pt-BR/3.1.0/benchmark">Benchmark</a></li><li class="navListItem"><a class="navItem" href="/pt-BR/3.1.0/limitations">Limitações</a></li><li class="navListItem"><a class="navItem" href="/pt-BR/3.1.0/about-package-store">Sobre a loja de pacotes (Store)</a></li><li class="navListItem"><a class="navItem" href="/pt-BR/3.1.0/symlinked-node-modules-structure">Symlinked `node_modules` estrutura</a></li><li class="navListItem"><a class="navItem" href="/pt-BR/3.1.0/how-peers-are-resolved">Como os pares são resolvidos</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/pnpm/pt-BR" target="_blank" rel="noreferrer noopener">Translate</a><h1 class="postHeaderTitle">pnpm recursive</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="tl-dr"></a><a href="#tl-dr" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>tl; dr</h2>
+<table>
+<thead>
+<tr><th>Comando</th><th>Significado</th></tr>
+</thead>
+<tbody>
+<tr><td><code>pnpm install -r</code></td><td>executa a instalação para cada pacote em cada subpasta</td></tr>
+<tr><td><code>pnpm run build --filter foo *</code></td><td>constrói todos os pacotes com nomes que começam com <code>foo-</code></td></tr>
+<tr><td><code>pnpm update - login-page ...</code></td><td>atualiza dependências em <code>login-page</code> e quaisquer dependências de <code>login-page</code> que também estão no repositório</td></tr>
+</tbody>
+</table>
+<h2><a class="anchor" aria-hidden="true" id="opcões"></a><a href="#opcões" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Opções</h2>
+<h3><a class="anchor" aria-hidden="true" id="link-workspace-packages"></a><a href="#link-workspace-packages" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>link-workspace-packages</h3>
+<p>Adicionado em: v2.14.0</p>
+<ul>
+<li>Padrão: <strong>true</strong></li>
+<li>Tipo: <strong>Boolean</strong></li>
+</ul>
+<p>Quando pacotes <code>true</code>, localmente disponíveis, são vinculados a <code>node_modules</code> em vez de serem baixados do registro.
+Isso é muito conveniente em um repositório de vários pacotes.</p>
+<h4><a class="anchor" aria-hidden="true" id="uso"></a><a href="#uso" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Uso</h4>
+<p>Crie um arquivo <code>.npmrc</code> na raiz do seu repositório multi-pacote com o seguinte conteúdo:</p>
+<pre><code class="hljs"><span class="hljs-attr">link-workspace-packages</span> = <span class="hljs-literal">true</span>
+</code></pre>
+<p>Crie um arquivo <a href="/pt-BR/3.1.0/workspace">pnpm-workspace.yaml</a> com o seguinte conteúdo:</p>
+<pre><code class="hljs css language-yaml"><span class="hljs-attr">packages:</span>
+<span class="hljs-bullet">  -</span> <span class="hljs-string">'**'</span>
+</code></pre>
+<p>Execute o <code>pnpm recursive install</code>.</p>
+<h3><a class="anchor" aria-hidden="true" id="shared-workspace-lockfile"></a><a href="#shared-workspace-lockfile" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>shared-workspace-lockfile</h3>
+<p>Adicionado em: v2.17.0 (inicialmente chamado <code>shared-workspace-shrinkwrap</code>)</p>
+<ul>
+<li>Padrão: <strong>true</strong></li>
+<li>Tipo: <strong>Boolean</strong></li>
+</ul>
+<p>Quando <code>true</code>, o pnpm cria um único arquivo <code>pnpm-lock.yaml</code> na raiz da área de trabalho (no diretório que contém o arquivo <code>pnpm-workspace.yaml</code>).
+Um arquivo de bloqueio compartilhado também significa que todas as dependências de todos os pacotes do espaço de trabalho estarão em um único <code>node_modules</code>.</p>
+<p>Vantagens desta opção:</p>
+<ul>
+<li>toda dependência é um singleton</li>
+<li>instalações mais rápidas em um repositório multi-pacote</li>
+<li>menos alterações nas revisões de código</li>
+</ul>
+<p><strong>NOTA:</strong> apesar de todas as dependências estarem linkadas para a raiz <code>node_modules</code>, os pacotes terão acesso somente àquelas dependências
+que são declarados em seu <code>package.json</code>. Portanto, o rigor do pnpm é preservado.</p>
+<h3><a class="anchor" aria-hidden="true" id="lt-package_selector-filter-lt-package_selector-"></a><a href="#lt-package_selector-filter-lt-package_selector-" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>- &amp; lt; package_selector&gt; ..., --filter &amp; lt; package_selector&gt;</h3>
+<p>Adicionado em: v2.13.0</p>
+<p>Capacidade de passar seletores após <code>--</code> adicionado na v2.15.0</p>
+<p>Filtros permitem restringir comandos a um subconjunto de pacotes.
+Uma rica sintaxe de seletor é suportada para escolher pacotes por nome
+ou por relação.</p>
+<h4><a class="anchor" aria-hidden="true" id="filter-lt-package_name"></a><a href="#filter-lt-package_name" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>--filter &amp; lt; package_name&gt;</h4>
+<p>Adicionado em: v2.13.0</p>
+<p>Para selecionar um pacote exato, basta especificar seu nome (<code>@babel/core</code>) ou usar um padrão
+para selecionar um conjunto de pacotes (<code>@babel/*</code>).</p>
+<p>Exemplos de uso:</p>
+<pre><code class="hljs css language-sh">pnpm recursive install --filter @babel/core
+pnpm recursive install --filter @babel/*
+<span class="hljs-comment"># ou</span>
+pnpm recursive install -- @babel/core
+pnpm recursive install -- @babel/*
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="filter-lt-package_name-"></a><a href="#filter-lt-package_name-" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>--filter &amp; lt; package_name&gt; ...</h4>
+<p>Adicionado em: v2.13.0</p>
+<p>Para selecionar um pacote e suas dependências (diretas e não diretas), sufixar o nome do pacote com 3 pontos: <code>&lt;nome_do_pacote&gt; ...</code>.
+Por exemplo, o próximo comando executará a instalação em todas as dependências de <code>foo</code> e em<code>foo</code>:</p>
+<pre><code class="hljs css language-sh">pnpm recursive install --filter foo...
+<span class="hljs-comment"># ou</span>
+pnpm recursive install -- foo...
+</code></pre>
+<p>Você pode usar um padrão para selecionar um conjunto de pacotes &quot;root&quot;:</p>
+<pre><code class="hljs css language-sh">pnpm recursive install --filter @babel/preset-*...
+<span class="hljs-comment"># ou</span>
+pnpm recursive install -- @babel/preset-*...
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="filter-lt-package_name--1"></a><a href="#filter-lt-package_name--1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>--filter ... &amp; lt; package_name&gt;</h4>
+<p>Adicionado em: 2.14.0</p>
+<p>Para selecionar um pacote e seus pacotes dependentes (direto e não direto), prefixar o nome do pacote com 3 pontos: <code>... &lt;nome_do_pacote&gt;</code>.
+Por exemplo, o próximo comando executará a instalação em todos os dependentes de <code>foo</code> e em <code>foo</code>:</p>
+<pre><code class="hljs css language-sh">pnpm recursive install --filter ...foo
+<span class="hljs-comment"># ou</span>
+pnpm recursive install -- ...foo
+</code></pre>
+<p>Quando os pacotes no espaço de trabalho são filtrados, cada pacote é obtido correspondendo a pelo menos um dos
+os seletores. Você pode usar quantos filtros quiser:</p>
+<pre><code class="hljs css language-sh">pnpm recursive install --filter ...foo --filter bar --filter qar...
+<span class="hljs-comment"># ou</span>
+pnpm recursive install -- ...foo bar qar...
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="filter-lt-diretorio-"></a><a href="#filter-lt-diretorio-" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>--filter ./&amp; lt; diretório&gt;</h4>
+<p>Adicionado em: v2.15.0</p>
+<h3><a class="anchor" aria-hidden="true" id="area-de-trabalho-simultaneidade"></a><a href="#area-de-trabalho-simultaneidade" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>área de trabalho-simultaneidade</h3>
+<p>Adicionado em: v2.13.0</p>
+<ul>
+<li>Padrão: <strong>4</strong></li>
+<li>Tipo: <strong>Número</strong></li>
+</ul>
+<p>Defina o número máximo de simultaneidade. Para concorrência ilimitada, use o <code>Infinity</code>.</p>
+<h3><a class="anchor" aria-hidden="true" id="bail"></a><a href="#bail" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>bail</h3>
+<p>Adicionado em: v2.13.0</p>
+<ul>
+<li>Padrão: <strong>true</strong></li>
+<li>Tipo: <strong>Boolean</strong></li>
+</ul>
+<p>Se verdadeiro, pára quando uma tarefa lança um erro.</p>
+<p>Exemplo de uso. Execute testes em todos os pacotes. Continue se os testes falharem em um dos pacotes:</p>
+<pre><code class="hljs"><span class="hljs-attribute">pnpm</span> recursive test --<span class="hljs-literal">no</span>-bail
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="ordenar"></a><a href="#ordenar" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ordenar</h3>
+<p>Adicionado em: v2.14.0</p>
+<ul>
+<li>Padrão: <strong>true</strong></li>
+<li>Tipo: <strong>Boolean</strong></li>
+</ul>
+<p>Quando <code>true</code>, os pacotes são classificados topologicamente (dependências antes dos dependentes). Passe <code>--no-sort</code> para desativar.</p>
+<p>Exemplos de uso:</p>
+<pre><code class="hljs css language-sh">pnpm recursive <span class="hljs-built_in">test</span> --no-sort
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="pnpm-instalacão-recursiva"></a><a href="#pnpm-instalacão-recursiva" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>pnpm instalação recursiva</h2>
+<p>Adicionado em: v1.24.0</p>
+<pre><code class="hljs css language-sh">pnpm recursive install [argumentos]
+</code></pre>
+<p>Executa simultaneamente a instalação em todos os subdiretórios com um <code>package.json</code> (excluindo node_modules).</p>
+<p>Exemplos de uso:</p>
+<pre><code class="hljs css language-sh">pnpm recursive install
+pnpm recursive install --ignore-scripts
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="pnpm-recursive-update"></a><a href="#pnpm-recursive-update" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>pnpm recursive update</h2>
+<p>Adicionado em: v1.24.0</p>
+<pre><code class="hljs css language-sh">pnpm recursive update [argumentos]
+</code></pre>
+<p>Executa simultaneamente a atualização em todos os subdiretórios com um <code>package.json</code> (excluindo node_modules).</p>
+<p>Exemplos de uso:</p>
+<pre><code class="hljs css language-sh">pnpm recursive update
+pnpm recursive update --depth 100
+<span class="hljs-comment"># atualiza o typescript para a versão mais recente em cada pacote</span>
+pnpm recursive update typescript@latest
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="pnpm-desinstalacão-recursiva"></a><a href="#pnpm-desinstalacão-recursiva" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>pnpm desinstalação recursiva</h2>
+<p>Adicionado em: v2.10.0</p>
+<pre><code class="hljs css language-sh">pnpm recursive uninstall [&lt;@scope&gt;/]&lt;pkg&gt;...
+</code></pre>
+<p>Desinstalar uma dependência de cada pacote</p>
+<p>Exemplos de uso:</p>
+<pre><code class="hljs css language-sh">pnpm recursive uninstall webpack
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="pnpm-dislink-recursivo"></a><a href="#pnpm-dislink-recursivo" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>pnpm dislink recursivo</h2>
+<p>Adicionado em: v1.32.0</p>
+<p>Um alias de &quot;unlink recursivo&quot; da v2.0.0</p>
+<pre><code class="hljs css language-sh">pnpm recursive dislink [argumentos]
+</code></pre>
+<p>Remove links para pacotes locais e os reinstala do registro.</p>
+<p>Exemplos de uso:</p>
+<pre><code class="hljs css language-sh">pnpm recursive dislink
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="pnpm-recursiva-desatualizada"></a><a href="#pnpm-recursiva-desatualizada" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>pnpm recursiva desatualizada</h2>
+<p>Adicionado em: v2.2.0</p>
+<pre><code class="hljs css language-sh">pnpm recursive outdated [[&lt;@scope&gt;/]&lt;pkg&gt; ...]
+</code></pre>
+<p>Verifique se há pacotes desatualizados em todos os projetos do repositório de vários pacotes.</p>
+<p>Exemplos de uso:</p>
+<pre><code class="hljs css language-sh">pnpm recursive outdated
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="pnpm-lista-recursiva"></a><a href="#pnpm-lista-recursiva" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>pnpm lista recursiva</h2>
+<p>Adicionado em: v2.2.0</p>
+<pre><code class="hljs css language-sh">pnpm recursive list [[&lt;@scope&gt;/]&lt;pkg&gt; ...]
+</code></pre>
+<p>Listar pacotes em cada projeto do repositório multi-pacote.
+Aceita os mesmos argumentos e sinalizadores que o comando regular <code>pnpm list</code>.</p>
+<p>Exemplos de uso:</p>
+<pre><code class="hljs css language-sh">pnpm recursive list
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="pnpm-recursive-run"></a><a href="#pnpm-recursive-run" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>pnpm recursive run</h2>
+<p>Adicionado em: v2.3.0</p>
+<pre><code class="hljs css language-sh">pnpm recursive run &lt;<span class="hljs-built_in">command</span>&gt; [-- &lt;args&gt;...]
+</code></pre>
+<p>Isso executa um comando arbitrário do objeto &quot;scripts&quot; de cada pacote.
+Se um pacote não tiver o comando, ele será ignorado.
+Se nenhum dos pacotes tiver o comando, o comando falhará.</p>
+<p>Exemplos de uso:</p>
+<pre><code class="hljs css language-sh">pnpm recursive run build
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="pnpm-recursive-test"></a><a href="#pnpm-recursive-test" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>pnpm recursive test</h2>
+<p>Adicionado em: v2.3.0</p>
+<pre><code class="hljs css language-sh">pnpm recursive <span class="hljs-built_in">test</span> [-- &lt;args&gt;...]
+</code></pre>
+<p>Isso executa o script &quot;test&quot; de cada pacote, se um foi fornecido.</p>
+<p>Exemplos de uso:</p>
+<pre><code class="hljs css language-sh">pnpm recursive <span class="hljs-built_in">test</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="pnpm-recursive-rebuild"></a><a href="#pnpm-recursive-rebuild" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>pnpm recursive rebuild</h2>
+<p>Adicionado em: v2.4.0</p>
+<pre><code class="hljs css language-sh">pnpm recursive rebuild [[&lt;@scope&gt;/&lt;name&gt;]...]
+</code></pre>
+<p>Esse comando executa o comando ** pnpm build ** em todos os pacotes do repositório de vários pacotes.</p>
+<p>Exemplos de uso:</p>
+<pre><code class="hljs css language-sh">pnpm recursive rebuild
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="pnpm-recursive-exec"></a><a href="#pnpm-recursive-exec" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>pnpm recursive exec</h2>
+<p>Adicionado em: v2.9.0</p>
+<pre><code class="hljs css language-sh">pnpm recursive <span class="hljs-built_in">exec</span> -- &lt;<span class="hljs-built_in">command</span>&gt; [args...]
+</code></pre>
+<p>Esse comando executa um comando em cada pacote do repositório de vários pacotes.</p>
+<p>O nome do pacote atual está disponível através da variável de ambiente <code>PNPM_PACKAGE_NAME</code> (suportada pelo pnpm v2.22.0).</p>
+<p>Exemplos de uso:</p>
+<pre><code class="hljs css language-sh">pnpm recursive <span class="hljs-built_in">exec</span> -- rm -rf node_modules
+pnpm recursive <span class="hljs-built_in">exec</span> -- pnpm view <span class="hljs-variable">$PNPM_PACKAGE_NAME</span>
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/pt-BR/3.1.0/pnpm-store"><span class="arrow-prev">← </span><span>pnpm store</span></a><a class="docs-next button" href="/pt-BR/3.1.0/pnpm-server"><span>pnpm server</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#tl-dr">tl; dr</a></li><li><a href="#opcões">Opções</a><ul class="toc-headings"><li><a href="#link-workspace-packages">link-workspace-packages</a></li><li><a href="#shared-workspace-lockfile">shared-workspace-lockfile</a></li><li><a href="#lt-package_selector-filter-lt-package_selector-">- &amp; lt; package_selector&gt; ..., --filter &amp; lt; package_selector&gt;</a></li><li><a href="#area-de-trabalho-simultaneidade">área de trabalho-simultaneidade</a></li><li><a href="#bail">bail</a></li><li><a href="#ordenar">ordenar</a></li></ul></li><li><a href="#pnpm-instalacão-recursiva">pnpm instalação recursiva</a></li><li><a href="#pnpm-recursive-update">pnpm recursive update</a></li><li><a href="#pnpm-desinstalacão-recursiva">pnpm desinstalação recursiva</a></li><li><a href="#pnpm-dislink-recursivo">pnpm dislink recursivo</a></li><li><a href="#pnpm-recursiva-desatualizada">pnpm recursiva desatualizada</a></li><li><a href="#pnpm-lista-recursiva">pnpm lista recursiva</a></li><li><a href="#pnpm-recursive-run">pnpm recursive run</a></li><li><a href="#pnpm-recursive-test">pnpm recursive test</a></li><li><a href="#pnpm-recursive-rebuild">pnpm recursive rebuild</a></li><li><a href="#pnpm-recursive-exec">pnpm recursive exec</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/pnpm-light.svg" alt="pnpm" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/pt-BR/installation.html">Getting Started</a></div><div><h5>Community</h5><a href="/pt-BR/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/pnpm" target="_blank">Stack Overflow</a><a href="https://gitter.im/pnpm/pnpm">Project Chat</a><a href="https://twitter.com/pnpmjs" target="_blank">Twitter</a></div><div><h5>More</h5><a href="https://medium.com/pnpm">Blog</a><a href="https://github.com/pnpm/pnpm">GitHub</a><a class="github-button" href="https://github.com/pnpm/pnpm" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '802b1d6ee5450a4296581a8e14aff417',
+                indexName: 'pnpm',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:pt-BR","version:3.1.0"]}
+              });
+            </script></body></html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>pnpm install &lt;pkg&gt; · pnpm</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Installs a package and any packages that it depends on."/><meta name="docsearch:version" content="3.3"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="pnpm install &lt;pkg&gt; · pnpm"/><meta property="og:type" content="website"/><meta property="og:url" content="https://pnpm.js.org/"/><meta property="og:description" content="Installs a package and any packages that it depends on."/><meta property="og:image" content="https://pnpm.js.org/img/ogimage.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://pnpm.js.org/img/ogimage.png"/><link rel="shortcut icon" href="/img/favicon.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-91385296-1', 'auto');
+              ga('send', 'pageview');
+            </script><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/en"><img class="logo" src="/img/pnpm-no-name-with-frame.svg" alt="pnpm"/><h2 class="headerTitleWithLogo">pnpm</h2></a><a href="/en/versions"><h3>3.3</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/en/3.3/motivation" target="_self">Docs</a></li><li class=""><a href="/en/3.3/faq" target="_self">FAQ</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><li class=""><a href="https://medium.com/pnpm" target="_self">Blog</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/de/3.3/pnpm-install-pkg">Deutsch</a></li><li><a href="/es-ES/3.3/pnpm-install-pkg">Español</a></li><li><a href="/hu/3.3/pnpm-install-pkg">Magyar</a></li><li><a href="/pt-BR/3.3/pnpm-install-pkg">Português (Brasil)</a></li><li><a href="/ru/3.3/pnpm-install-pkg">Русский</a></li><li><a href="/uk/3.3/pnpm-install-pkg">Українська</a></li><li><a href="/zh-CN/3.3/pnpm-install-pkg">中文</a></li><li><a href="https://crowdin.com/project/pnpm" target="_blank" rel="noreferrer noopener">Help Translate</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>CLI commands</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Introduction</h3><ul class=""><li class="navListItem"><a class="navItem" href="/en/3.3/motivation">Motivation</a></li><li class="navListItem"><a class="navItem" href="/en/3.3/installation">Installation</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Usage</h3><ul class=""><li class="navListItem"><a class="navItem" href="/en/3.3/pnpm-cli">pnpm CLI</a></li><li class="navListItem"><a class="navItem" href="/en/3.3/pnpx-cli">pnpx CLI</a></li><li class="navListItem"><a class="navItem" href="/en/3.3/configuring">Configuring</a></li><li class="navListItem"><a class="navItem" href="/en/3.3/hooks">Hooks</a></li><li class="navListItem"><a class="navItem" href="/en/3.3/aliases">Aliases</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">CLI commands</h3><ul class=""><li class="navListItem"><a class="navItem" href="/en/3.3/pnpm-install">pnpm install</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/en/3.3/pnpm-install-pkg">pnpm install &lt;pkg&gt;</a></li><li class="navListItem"><a class="navItem" href="/en/3.3/pnpm-unlink">pnpm unlink</a></li><li class="navListItem"><a class="navItem" href="/en/3.3/pnpm-store">pnpm store</a></li><li class="navListItem"><a class="navItem" href="/en/3.3/pnpm-recursive">pnpm recursive</a></li><li class="navListItem"><a class="navItem" href="/en/3.3/pnpm-server">pnpm server</a></li><li class="navListItem"><a class="navItem" href="/en/3.3/pnpm-import">pnpm import</a></li><li class="navListItem"><a class="navItem" href="/en/3.3/pnpm-publish">pnpm publish</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Recipes</h3><ul class=""><li class="navListItem"><a class="navItem" href="/en/3.3/continuous-integration">Continuous Integration</a></li><li class="navListItem"><a class="navItem" href="/en/3.3/workspace">Workspace</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Advanced</h3><ul class=""><li class="navListItem"><a class="navItem" href="/en/3.3/benchmark">Benchmark</a></li><li class="navListItem"><a class="navItem" href="/en/3.3/limitations">Limitations</a></li><li class="navListItem"><a class="navItem" href="/en/3.3/about-package-store">About the package store</a></li><li class="navListItem"><a class="navItem" href="/en/3.3/symlinked-node-modules-structure">Symlinked `node_modules` structure</a></li><li class="navListItem"><a class="navItem" href="/en/3.3/how-peers-are-resolved">How peers are resolved</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/pnpm/pnpm.github.io/edit/source/docs/pnpm-install-pkg.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 class="postHeaderTitle">pnpm install &lt;pkg&gt;</h1></header><article><div><span><p>Installs a package and any packages that it depends on.
+By default, any new package is installed as a prod dependency.</p>
+<p><img src="/img/demos/pnpm-install-package.svg" alt=""></p>
+<h2><a class="anchor" aria-hidden="true" id="tl-dr"></a><a href="#tl-dr" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>tl;dr</h2>
+<table>
+<thead>
+<tr><th>Command</th><th>Meaning</th></tr>
+</thead>
+<tbody>
+<tr><td><code>pnpm i sax</code></td><td>npm package (save to <code>dependencies</code>)</td></tr>
+<tr><td><code>pnpm i -D sax</code></td><td>save to <code>devDependencies</code></td></tr>
+<tr><td><code>pnpm i -O sax</code></td><td>save to <code>optionalDependencies</code></td></tr>
+<tr><td><code>pnpm i -P sax</code></td><td>save to <code>dependencies</code></td></tr>
+<tr><td><code>pnpm i sax@next</code></td><td>Specify tag <code>next</code></td></tr>
+<tr><td><code>pnpm i sax@3.0.0</code></td><td>Specify version <code>3.0.0</code></td></tr>
+<tr><td><code>pnpm i sax@&quot;&gt;=1 &lt;2.0&quot;</code></td><td>Specify version range</td></tr>
+<tr><td><code>pnpm i user/repo</code></td><td>GitHub</td></tr>
+<tr><td><code>pnpm i user/repo#master</code></td><td>GitHub</td></tr>
+<tr><td><code>pnpm i user/repo#semver:^2.0.0</code></td><td>GitHub</td></tr>
+<tr><td><code>pnpm i github:user/repo</code></td><td>GitHub</td></tr>
+<tr><td><code>pnpm i gitlab:user/repo</code></td><td>GitHub</td></tr>
+<tr><td><code>pnpm i /path/to/repo</code></td><td>Absolute path</td></tr>
+<tr><td><code>pnpm i ./archive.tgz</code></td><td>Tarball</td></tr>
+<tr><td><code>pnpm i https://site.com/archive.tgz</code></td><td>Tarball via HTTP</td></tr>
+</tbody>
+</table>
+<h2><a class="anchor" aria-hidden="true" id="supported-package-locations"></a><a href="#supported-package-locations" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Supported package locations</h2>
+<p>A package can be installed from different locations:</p>
+<h3><a class="anchor" aria-hidden="true" id="install-from-npm-registry"></a><a href="#install-from-npm-registry" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Install from npm registry</h3>
+<p><code>pnpm install package-name</code> will install the latest version
+of <code>package-name</code> from the <a href="https://www.npmjs.com/">npm registry</a>.</p>
+<p>You may also install packages by:</p>
+<ul>
+<li>tag: <code>pnpm install express@nightly</code></li>
+<li>version: <code>pnpm install express@1.0.0</code></li>
+<li>version range: <code>pnpm install express@2 react@&quot;&gt;=0.1.0 &lt;0.2.0&quot;</code></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="install-from-local-file-system"></a><a href="#install-from-local-file-system" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Install from local file system</h3>
+<p>There are two ways to install from the local file system:</p>
+<ol>
+<li>from a tarball file (<code>.tar</code>, <code>.tar.gz</code>, or <code>.tgz</code>)</li>
+<li>from a directory</li>
+</ol>
+<p>Examples:</p>
+<pre><code class="hljs css language-sh">pnpm install ./package.tgz
+pnpm install ./some-directory
+</code></pre>
+<p>When you install from a directory, a symlink will be created in the
+current project's <code>node_modules</code>, so it is the same as running
+<code>pnpm link</code>.</p>
+<h3><a class="anchor" aria-hidden="true" id="install-from-remote-gzipped-tarball"></a><a href="#install-from-remote-gzipped-tarball" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Install from remote gzipped tarball</h3>
+<p>The argument must start with &quot;http://&quot; or &quot;https://&quot;.</p>
+<p>Example:</p>
+<pre><code class="hljs css language-sh">pnpm install https://github.com/indexzero/forever/tarball/v0.5.6
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="install-from-git-repository"></a><a href="#install-from-git-repository" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Install from Git repository</h3>
+<pre><code class="hljs css language-sh">npm install &lt;git remote url&gt;
+</code></pre>
+<p>Installs the package from the hosted Git provider, cloning it with Git.</p>
+<p>You may install from Git by:</p>
+<ul>
+<li>commit: <code>pnpm install kevva/is-positive#97edff6f525f192a3f83cea1944765f769ae2678</code></li>
+<li>branch: <code>pnpm install kevva/is-positive#master</code></li>
+<li>version range: <code>pnpm install kevva/is-positive#semver:^2.0.0</code></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="options"></a><a href="#options" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Options</h2>
+<h3><a class="anchor" aria-hidden="true" id="save-prod-p"></a><a href="#save-prod-p" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>--save-prod, -P</h3>
+<p>This will install one or more packages in your <code>dependencies</code>.</p>
+<h3><a class="anchor" aria-hidden="true" id="save-dev-d"></a><a href="#save-dev-d" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>--save-dev, -D</h3>
+<p>Using <code>--save-dev</code> or <code>-D</code> will install one or more packages in your <code>devDependencies</code>.</p>
+<h3><a class="anchor" aria-hidden="true" id="save-optional-o"></a><a href="#save-optional-o" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>--save-optional, -O</h3>
+<p>Using <code>--save-optional</code> or <code>-O</code> will install one or more packages in your <code>optionalDependencies</code>.</p>
+<h3><a class="anchor" aria-hidden="true" id="save-exact-e"></a><a href="#save-exact-e" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>--save-exact, -E</h3>
+<p>Saved dependencies will be configured with an exact version rather than using pnpm's default semver range operator.</p>
+<h3><a class="anchor" aria-hidden="true" id="save-peer"></a><a href="#save-peer" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>--save-peer</h3>
+<p>Added in: v3.2.0</p>
+<p>Using <code>--save-peer</code> will add one or more packages to <code>peerDependencies</code> and install them as dev dependencies.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/en/3.3/pnpm-install"><span class="arrow-prev">← </span><span>Previous</span></a><a class="docs-next button" href="/en/3.3/pnpm-unlink"><span>Next</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#tl-dr">tl;dr</a></li><li><a href="#supported-package-locations">Supported package locations</a><ul class="toc-headings"><li><a href="#install-from-npm-registry">Install from npm registry</a></li><li><a href="#install-from-local-file-system">Install from local file system</a></li><li><a href="#install-from-remote-gzipped-tarball">Install from remote gzipped tarball</a></li><li><a href="#install-from-git-repository">Install from Git repository</a></li></ul></li><li><a href="#options">Options</a><ul class="toc-headings"><li><a href="#save-prod-p">--save-prod, -P</a></li><li><a href="#save-dev-d">--save-dev, -D</a></li><li><a href="#save-optional-o">--save-optional, -O</a></li><li><a href="#save-exact-e">--save-exact, -E</a></li><li><a href="#save-peer">--save-peer</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/pnpm-light.svg" alt="pnpm" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/installation.html">Getting Started</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/pnpm" target="_blank">Stack Overflow</a><a href="https://gitter.im/pnpm/pnpm">Project Chat</a><a href="https://twitter.com/pnpmjs" target="_blank">Twitter</a></div><div><h5>More</h5><a href="https://medium.com/pnpm">Blog</a><a href="https://github.com/pnpm/pnpm">GitHub</a><a class="github-button" href="https://github.com/pnpm/pnpm" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '802b1d6ee5450a4296581a8e14aff417',
+                indexName: 'pnpm',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en","version:3.3"]}
+              });
+            </script></body></html>

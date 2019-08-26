@@ -1,0 +1,217 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Hooks · pnpm</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="pnpm allows to step directly into the installation process via special functions called *hooks*."/><meta name="docsearch:version" content="3.5"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Hooks · pnpm"/><meta property="og:type" content="website"/><meta property="og:url" content="https://pnpm.js.org/"/><meta property="og:description" content="pnpm allows to step directly into the installation process via special functions called *hooks*."/><meta property="og:image" content="https://pnpm.js.org/img/ogimage.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://pnpm.js.org/img/ogimage.png"/><link rel="shortcut icon" href="/img/favicon.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-91385296-1', 'auto');
+              ga('send', 'pageview');
+            </script><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/en"><img class="logo" src="/img/pnpm-no-name-with-frame.svg" alt="pnpm"/><h2 class="headerTitleWithLogo">pnpm</h2></a><a href="/en/versions"><h3>3.5</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/en/3.5/motivation" target="_self">Docs</a></li><li class=""><a href="/en/3.5/faq" target="_self">FAQ</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><li class=""><a href="https://medium.com/pnpm" target="_self">Blog</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/de/3.5/hooks">Deutsch</a></li><li><a href="/es-ES/3.5/hooks">Español</a></li><li><a href="/hu/3.5/hooks">Magyar</a></li><li><a href="/pt-BR/3.5/hooks">Português (Brasil)</a></li><li><a href="/ru/3.5/hooks">Русский</a></li><li><a href="/uk/3.5/hooks">Українська</a></li><li><a href="/zh-CN/3.5/hooks">中文</a></li><li><a href="https://crowdin.com/project/pnpm" target="_blank" rel="noreferrer noopener">Help Translate</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Usage</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Introduction</h3><ul class=""><li class="navListItem"><a class="navItem" href="/en/3.5/motivation">Motivation</a></li><li class="navListItem"><a class="navItem" href="/en/3.5/installation">Installation</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Usage</h3><ul class=""><li class="navListItem"><a class="navItem" href="/en/3.5/pnpm-cli">pnpm CLI</a></li><li class="navListItem"><a class="navItem" href="/en/3.5/pnpx-cli">pnpx CLI</a></li><li class="navListItem"><a class="navItem" href="/en/3.5/configuring">Configuring</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/en/3.5/hooks">Hooks</a></li><li class="navListItem"><a class="navItem" href="/en/3.5/aliases">Aliases</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">CLI commands</h3><ul class=""><li class="navListItem"><a class="navItem" href="/en/3.5/pnpm-import">pnpm import</a></li><li class="navListItem"><a class="navItem" href="/en/3.5/pnpm-install-pkg">pnpm install &lt;pkg&gt;</a></li><li class="navListItem"><a class="navItem" href="/en/3.5/pnpm-install">pnpm install</a></li><li class="navListItem"><a class="navItem" href="/en/3.5/pnpm-publish">pnpm publish</a></li><li class="navListItem"><a class="navItem" href="/en/3.5/pnpm-recursive">pnpm recursive</a></li><li class="navListItem"><a class="navItem" href="/en/3.5/pnpm-run">pnpm run</a></li><li class="navListItem"><a class="navItem" href="/en/3.5/pnpm-server">pnpm server</a></li><li class="navListItem"><a class="navItem" href="/en/3.5/pnpm-store">pnpm store</a></li><li class="navListItem"><a class="navItem" href="/en/3.5/pnpm-unlink">pnpm unlink</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Recipes</h3><ul class=""><li class="navListItem"><a class="navItem" href="/en/3.5/continuous-integration">Continuous Integration</a></li><li class="navListItem"><a class="navItem" href="/en/3.5/workspace">Workspace</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Advanced</h3><ul class=""><li class="navListItem"><a class="navItem" href="/en/3.5/logos">Logos</a></li><li class="navListItem"><a class="navItem" href="/en/3.5/benchmark">Benchmark</a></li><li class="navListItem"><a class="navItem" href="/en/3.5/limitations">Limitations</a></li><li class="navListItem"><a class="navItem" href="/en/3.5/about-package-store">About the package store</a></li><li class="navListItem"><a class="navItem" href="/en/3.5/symlinked-node-modules-structure">Symlinked `node_modules` structure</a></li><li class="navListItem"><a class="navItem" href="/en/3.5/how-peers-are-resolved">How peers are resolved</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/pnpm/pnpm.github.io/edit/source/docs/hooks.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 class="postHeaderTitle">Hooks</h1></header><article><div><span><p>pnpm allows to step directly into the installation process via special functions called <em>hooks</em>.
+Hooks can be declared in a file called <code>pnpmfile.js</code>. <code>pnpmfile.js</code> should live in the root of the project.</p>
+<h2><a class="anchor" aria-hidden="true" id="tl-dr"></a><a href="#tl-dr" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>tl;dr</h2>
+<table>
+<thead>
+<tr><th>Option</th><th>Meaning</th></tr>
+</thead>
+<tbody>
+<tr><td><code>hooks.readPackage(pkg, context): pkg</code></td><td>Allows to mutate every dependency's <code>package.json</code></td></tr>
+<tr><td><code>hooks.afterAllResolved(shrinkwrap, context): shrinkwrap</code></td><td>Is called after resolution stage. Allows to mutate the shrinkwrap object.</td></tr>
+</tbody>
+</table>
+<h2><a class="anchor" aria-hidden="true" id="hooksreadpackagepkg-context-pkg"></a><a href="#hooksreadpackagepkg-context-pkg" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>hooks.readPackage(pkg, context): pkg</code></h2>
+<p>Allows to mutate every dependency's <code>package.json</code>.
+An example of a <code>pnpmfile.js</code> that changes the dependencies field of a dependency:
+You will need to delete the <code>shrinkwrap.yaml</code> if you have already resolved the dependency you want change.</p>
+<pre><code class="hljs css language-js"><span class="hljs-built_in">module</span>.exports = {
+  <span class="hljs-attr">hooks</span>: {
+    readPackage
+  }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">readPackage</span> (<span class="hljs-params">pkg, context</span>) </span>{
+  <span class="hljs-comment">// Override the manifest of foo@1 after downloading it from the registry</span>
+  <span class="hljs-comment">// Replace all dependencies with bar@2</span>
+  <span class="hljs-keyword">if</span> (pkg.name === <span class="hljs-string">'foo'</span> &amp;&amp; pkg.version.startsWith(<span class="hljs-string">'1.'</span>)) {
+    pkg.dependencies = {
+      <span class="hljs-attr">bar</span>: <span class="hljs-string">'^2.0.0'</span>
+    }
+    context.log(<span class="hljs-string">'bar@1 =&gt; bar@2 in dependencies of foo'</span>)
+  }
+  
+  <span class="hljs-comment">// This will fix any dependencies on baz to 1.2.3</span>
+  <span class="hljs-keyword">if</span> (pkg.dependencies &amp;&amp; pkg.dependencies.baz === <span class="hljs-string">'*'</span>) {
+    pkg.dependencies.baz = <span class="hljs-string">'1.2.3'</span>;
+  }
+  
+  <span class="hljs-keyword">return</span> pkg
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="arguments"></a><a href="#arguments" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments</h3>
+<ul>
+<li><code>pkg</code> - <em>Manifest</em> - The manifest of the package. Either the response from the registry or the <code>package.json</code> content.</li>
+<li><code>context.log(msg)</code> - <em>Function</em> - Allows to log messages.</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="usage"></a><a href="#usage" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Usage</h3>
+<h4><a class="anchor" aria-hidden="true" id="substitute-a-package-with-your-fork"></a><a href="#substitute-a-package-with-your-fork" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Substitute a package with your fork</h4>
+<p>Lets' suppose you forked a package with an important fix and you want the fixed
+version installed.</p>
+<p>The following hook substitutes <code>resolve</code> with <code>@zkochan</code>'s fork.</p>
+<pre><code class="hljs css language-js"><span class="hljs-meta">'use strict'</span>
+<span class="hljs-built_in">module</span>.exports = {
+  <span class="hljs-attr">hooks</span>: {
+    readPackage
+  }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">readPackage</span> (<span class="hljs-params">pkg</span>) </span>{
+  <span class="hljs-keyword">if</span> (pkg.dependencies &amp;&amp; pkg.dependencies.resolve) {
+    pkg.dependencies.resolve = <span class="hljs-string">'zkochan/node-resolve'</span>
+  }
+
+  <span class="hljs-keyword">return</span> pkg
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="packages-validation"></a><a href="#packages-validation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Packages validation</h4>
+<p>You want only packages with MIT license in your <code>node_modules</code>? Check the licenses
+and throw an exception if you don't like the package's license:</p>
+<pre><code class="hljs css language-js"><span class="hljs-meta">'use strict'</span>
+<span class="hljs-built_in">module</span>.exports = {
+  <span class="hljs-attr">hooks</span>: {
+    readPackage
+  }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">readPackage</span> (<span class="hljs-params">pkg</span>) </span>{
+  <span class="hljs-keyword">if</span> (pkg.license !== <span class="hljs-string">'MIT'</span>) {
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'Invalid license!'</span>)
+  }
+
+  <span class="hljs-keyword">return</span> pkg
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="renaming-bins"></a><a href="#renaming-bins" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Renaming bins</h4>
+<p>You want to rename a package's bin? Just replace it:</p>
+<pre><code class="hljs css language-js"><span class="hljs-meta">'use strict'</span>
+<span class="hljs-built_in">module</span>.exports = {
+  <span class="hljs-attr">hooks</span>: {
+    readPackage
+  }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">readPackage</span> (<span class="hljs-params">pkg</span>) </span>{
+  <span class="hljs-keyword">if</span> (pkg.name === <span class="hljs-string">'eslint'</span>) {
+    pkg.bin = {<span class="hljs-attr">jslint</span>: pkg.bin}
+  }
+
+  <span class="hljs-keyword">return</span> pkg
+}
+</code></pre>
+<p>Now you can run <code>jslint fix</code> instead of <code>eslint fix</code>.</p>
+<h2><a class="anchor" aria-hidden="true" id="hooksafterallresolvedshrinkwrap-context-shrinkwrap"></a><a href="#hooksafterallresolvedshrinkwrap-context-shrinkwrap" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>hooks.afterAllResolved(shrinkwrap, context): shrinkwrap</code></h2>
+<p>Added in: v1.41.0</p>
+<p>Is called after resolution stage. Allows to mutate the shrinkwrap object.</p>
+<h3><a class="anchor" aria-hidden="true" id="arguments-1"></a><a href="#arguments-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arguments</h3>
+<ul>
+<li><code>shrinkwrap</code> - <em>object</em> - The object that is saved to <code>shrinkwrap.yaml</code>.</li>
+<li><code>context.log(msg)</code> - <em>Function</em> - Allows to log messages.</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="usage-1"></a><a href="#usage-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Usage</h3>
+<pre><code class="hljs css language-js"><span class="hljs-built_in">module</span>.exports = {
+  <span class="hljs-attr">hooks</span>: {
+    afterAllResolved
+  }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">afterAllResolved</span> (<span class="hljs-params">shrinkwrap, context</span>) </span>{
+  <span class="hljs-comment">// ...</span>
+  <span class="hljs-keyword">return</span> shrinkwrap
+}
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/en/3.5/configuring"><span class="arrow-prev">← </span><span>Configuring</span></a><a class="docs-next button" href="/en/3.5/aliases"><span>Aliases</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#tl-dr">tl;dr</a></li><li><a href="#hooksreadpackagepkg-context-pkg"><code>hooks.readPackage(pkg, context): pkg</code></a><ul class="toc-headings"><li><a href="#arguments">Arguments</a></li><li><a href="#usage">Usage</a></li></ul></li><li><a href="#hooksafterallresolvedshrinkwrap-context-shrinkwrap"><code>hooks.afterAllResolved(shrinkwrap, context): shrinkwrap</code></a><ul class="toc-headings"><li><a href="#arguments-1">Arguments</a></li><li><a href="#usage-1">Usage</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/pnpm-light.svg" alt="pnpm" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/installation.html">Getting Started</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/pnpm" target="_blank">Stack Overflow</a><a href="https://gitter.im/pnpm/pnpm">Project Chat</a><a href="https://twitter.com/pnpmjs" target="_blank">Twitter</a></div><div><h5>More</h5><a href="https://medium.com/pnpm">Blog</a><a href="https://github.com/pnpm/pnpm">GitHub</a><a class="github-button" href="https://github.com/pnpm/pnpm" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '802b1d6ee5450a4296581a8e14aff417',
+                indexName: 'pnpm',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en","version:3.5"]}
+              });
+            </script></body></html>

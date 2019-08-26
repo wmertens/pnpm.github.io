@@ -1,0 +1,139 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Perguntas Frequentes · pnpm</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## Por que minha pasta `node_modules` usa espaço em disco se os pacotes são armazenados em um armazenamento global?"/><meta name="docsearch:version" content="3.2"/><meta name="docsearch:language" content="pt-BR"/><meta property="og:title" content="Perguntas Frequentes · pnpm"/><meta property="og:type" content="website"/><meta property="og:url" content="https://pnpm.js.org/"/><meta property="og:description" content="## Por que minha pasta `node_modules` usa espaço em disco se os pacotes são armazenados em um armazenamento global?"/><meta property="og:image" content="https://pnpm.js.org/img/ogimage.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://pnpm.js.org/img/ogimage.png"/><link rel="shortcut icon" href="/img/favicon.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-91385296-1', 'auto');
+              ga('send', 'pageview');
+            </script><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/pt-BR"><img class="logo" src="/img/pnpm-no-name-with-frame.svg" alt="pnpm"/><h2 class="headerTitleWithLogo">pnpm</h2></a><a href="/pt-BR/versions"><h3>3.2</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/pt-BR/3.2/motivation" target="_self">Documentação</a></li><li class="siteNavItemActive"><a href="/pt-BR/3.2/faq" target="_self">FAQ</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><li class=""><a href="https://medium.com/pnpm" target="_self">Blog</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>Português (Brasil)</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/en/3.2/faq">English</a></li><li><a href="/de/3.2/faq">Deutsch</a></li><li><a href="/es-ES/3.2/faq">Español</a></li><li><a href="/hu/3.2/faq">Magyar</a></li><li><a href="/ru/3.2/faq">Русский</a></li><li><a href="/uk/3.2/faq">Українська</a></li><li><a href="/zh-CN/3.2/faq">中文</a></li><li><a href="https://crowdin.com/project/pnpm" target="_blank" rel="noreferrer noopener">Ajudar a traduzir</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/pnpm/pt-BR" target="_blank" rel="noreferrer noopener">Translate</a><h1 class="postHeaderTitle">Perguntas Frequentes</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="por-que-minha-pasta-node_modules-usa-espaco-em-disco-se-os-pacotes-são-armazenados-em-um-armazenamento-global"></a><a href="#por-que-minha-pasta-node_modules-usa-espaco-em-disco-se-os-pacotes-são-armazenados-em-um-armazenamento-global" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Por que minha pasta <code>node_modules</code> usa espaço em disco se os pacotes são armazenados em um armazenamento global?</h2>
+<p>O pnpm cria <a href="https://en.wikipedia.org/wiki/Hard_link">hard links</a> da store global para as pastas <code>node_modules</code> do projeto.
+Os links físicos apontam para o mesmo lugar no disco onde estão os arquivos originais.
+Então, por exemplo, se você tem <code>foo</code> no seu projeto como uma dependência e ocupa 1MB de espaço,
+então parecerá que ocupa 1MB de espaço na pasta <code>node_modules</code> do projeto e
+a mesma quantidade de espaço na store global. No entanto, esse 1MB é * o mesmo espaço * no disco
+abordada a partir de dois locais diferentes. Então, no total, 'foo` ocupa 1MB,
+não 2MB.</p>
+<p>Para mais sobre este assunto:</p>
+<ul>
+<li><a href="https://unix.stackexchange.com/questions/88423/why-do-hard-links-seem-to-take-the-same-space-as-the-originals">Por que os hard links parecem ocupar o mesmo espaço que os originais?</a></li>
+<li><a href="https://gist.github.com/zkochan/106cfef49f8476b753a9cbbf9c65aff1">Um tópico da sala de bate-papo do pnpm</a></li>
+<li><a href="https://github.com/pnpm/pnpm/issues/794">Um problema no repositório pnpm</a></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="funciona-no-windows-e-mais-dificil-criar-links-simbolicos-no-windows"></a><a href="#funciona-no-windows-e-mais-dificil-criar-links-simbolicos-no-windows" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Funciona no Windows? É mais difícil criar links simbólicos no Windows</h2>
+<p>Usando links simbólicos no Windows é realmente problemático. É por isso que o pnpm usa junções em vez de links simbólicos no sistema operacional Windows.</p>
+<h2><a class="anchor" aria-hidden="true" id="funciona-no-windows-a-abordagem-node_modules-aninhada-e-basicamente-incompativel-com-o-windows"></a><a href="#funciona-no-windows-a-abordagem-node_modules-aninhada-e-basicamente-incompativel-com-o-windows" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Funciona no Windows? A abordagem <code>node_modules</code> aninhada é basicamente incompatível com o Windows</h2>
+<p>Versões anteriores do npm tinham problemas por causa do aninhamento de todos os <code>node_modules</code> (veja <a href="https://github.com/nodejs/node-v0.x-archive/issues/6960">A abordagem node_modules aninhada do node é basicamente incompatível com o Windows</a>) . No entanto, o pnpm não cria pastas profundas, armazena todos os pacotes de forma simples e usa links simbólicos para criar a estrutura da árvore de dependência.</p>
+<h2><a class="anchor" aria-hidden="true" id="e-os-links-simbolicos-circulares"></a><a href="#e-os-links-simbolicos-circulares" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>E os links simbólicos circulares?</h2>
+<p>Embora o pnpm use links simbólicos para colocar dependências em pastas <code>node_modules</code>, links simbólicos circulares são evitados porque os pacotes pai são colocados na mesma pasta<code>node_modules</code> na qual suas dependências estão. Portanto, as dependências de <code>foo</code> não estão em<code>foo/node_modules</code>, mas <code>foo</code> está em<code>node_modules/foo</code>, junto com suas próprias dependências.</p>
+<h2><a class="anchor" aria-hidden="true" id="por-que-tem-links-rigidos-por-que-não-ligar-diretamente-a-store-global"></a><a href="#por-que-tem-links-rigidos-por-que-não-ligar-diretamente-a-store-global" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Por que tem links rígidos? Por que não ligar diretamente à store global?</h2>
+<p>Um pacote pode ter diferentes conjuntos de dependências em uma máquina.</p>
+<p>No projeto <strong>A</strong> <code>foo@1.0.0</code> pode ter dependência resolvida para <code>bar@1.0.0</code> mas no projeto <strong>B</strong> a mesma dependência de <code>foo</code> pode resolver para <code>bar@1.1.0</code>. Então pnpm hard links <code>foo@1.0.0</code> para todo projeto onde é usado, para criar diferentes conjuntos de dependências para ele.</p>
+<p>O symlinking direto para o repositório global funcionaria com o sinalizador <code>--preserve-symlinks</code> do Node. Mas <code>--preserve-symlinks</code> vem
+com um monte de questões diferentes, então decidimos ficar com hard links.
+Para mais detalhes sobre o porquê desta decisão, consulte: <a href="https://github.com/nodejs/node-eps/issues/46">https://github.com/nodejs/node-eps/issues/46</a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="o-pnpm-funciona-em-varios-discos-rigidos-ou-sistemas-de-arquivos"></a><a href="#o-pnpm-funciona-em-varios-discos-rigidos-ou-sistemas-de-arquivos" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>O pnpm funciona em vários discos rígidos ou sistemas de arquivos?</h2>
+<p>O armazenamento de pacotes deve estar no mesmo disco que as instalações.
+Caso contrário, os pacotes serão copiados, não vinculados.
+Isso é devido a uma limitação do sistema operacional em hard-linking. Veja <a href="https://github.com/pnpm/pnpm/issues/712">Issue # 712</a> para mais detalhes.</p>
+<p>O pnpm funciona de maneira diferente com base nos dois casos abaixo:</p>
+<h3><a class="anchor" aria-hidden="true" id="o-caminho-da-store-e-especificado"></a><a href="#o-caminho-da-store-e-especificado" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>O caminho da store é especificado</h3>
+<p>Se o caminho de armazenamento for especificado por meio da <a href="/pt-BR/3.2/configuring">configuração de armazenamento</a>, a cópia ocorrerá entre o armazenamento e todos os projetos que estiverem em um disco diferente.</p>
+<p>Se você executar <code>pnpm install</code> no disco<code>D:</code>, então o armazenamento pnpm deve estar no disco<code>D:</code>.
+Se o repositório pnpm estiver localizado no disco <code>C:</code>, todos os pacotes requeridos serão copiados diretamente para o local do projeto.
+Isso reduz severamente os benefícios do pnpm.</p>
+<h3><a class="anchor" aria-hidden="true" id="o-caminho-da-store-não-esta-especificado"></a><a href="#o-caminho-da-store-não-esta-especificado" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>O caminho da store NÃO está especificado</h3>
+<p>Se o caminho da store não estiver configurado, várias stores serão criadas (uma para cada unidade ou sistema de arquivos).</p>
+<p>Se a instalação for executada no disco <code>D:</code>, o armazenamento será criado em <code>D:\.pnpm-store</code>.
+Se mais tarde a instalação for executada no disco <code>C:</code>, uma store independente será criada em <code>C:\.pnpm-store</code>.
+Os projetos ainda manteriam os benefícios do pnpm, mas cada unidade pode ter pacotes redundantes.</p>
+<h2><a class="anchor" aria-hidden="true" id="o-que-o-pnpm-store-prune-faz-isso-e-prejudicial"></a><a href="#o-que-o-pnpm-store-prune-faz-isso-e-prejudicial" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>O que o <code>pnpm store prune</code> faz? Isso é prejudicial?</h2>
+<p>O comando <code>pnpm store prune</code> remove <em>pacotes não referenciados</em>.</p>
+<p>Pacotes não referenciados são pacotes que não são usados ​​por nenhum projeto no sistema.
+Os pacotes podem se tornar não referenciados após a maioria das operações de instalação.</p>
+<p>Por exemplo: durante o <code>pnpm install</code>, o pacote<code>foo@1.0.0</code> é atualizado para <code>foo@1.0.1</code>.
+O pnpm manterá o <code>foo@1.0.0</code> na store, já que ele não remove pacotes automaticamente.
+Se o pacote <code>foo@1.0.0</code> não for usado por nenhum outro projeto no sistema, ele não será referenciado.
+Rodar <code>pnpm store prune</code> removeria<code>foo@1.0.0</code> da store.</p>
+<p>Rodar <code>pnpm store prune</code> não é prejudicial e não tem efeitos colaterais em seus projetos.
+Se futuras instalações exigirem pacotes removidos, o pnpm irá baixá-los novamente.</p>
+<p>É uma prática recomendada executar o <code>pnpm store prune</code> ocasionalmente para limpar a store, mas não com muita freqüência.
+Às vezes, os pacotes não referenciados tornam-se obrigatórios novamente.
+Isso pode ocorrer ao alternar ramificações e instalar dependências mais antigas.
+Em seguida, o pnpm precisaria baixar novamente todos os pacotes removidos, abreviando o processo de instalação.</p>
+<h2><a class="anchor" aria-hidden="true" id="o-que-significa-pnpm"></a><a href="#o-que-significa-pnpm" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>O que significa <code>pnpm</code>?</h2>
+<p><code>pnpm</code> significa <code>performance_npm</code>. <a href="https://github.com/rstacruz/">Rico Sta. Cruz</a> veio com o nome.</p>
+<h2><a class="anchor" aria-hidden="true" id="pnpm-não-funciona-com-o-seu-projeto"></a><a href="#pnpm-não-funciona-com-o-seu-projeto" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>pnpm</code> não funciona com o &lt;SEU-PROJETO&gt;?</h2>
+<p>Na maioria dos casos, isso significa que uma das dependências requer pacotes não declarados em <code>package.json</code>.
+É um erro comum causado pelo flat <code>node_modules</code>. Se isso acontecer, isso é um erro na dependência e
+dependência deve ser corrigida. Isso pode levar algum tempo, portanto, o pnpm suporta soluções alternativas para que os pacotes com bugs funcionem.</p>
+<h3><a class="anchor" aria-hidden="true" id="solucão-1"></a><a href="#solucão-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Solução 1</h3>
+<p>No exemplo a seguir, uma dependência <strong>não</strong> tem o módulo <code>iterall</code> em sua própria lista de dependências.</p>
+<p>A solução mais fácil para resolver dependências ausentes dos pacotes com bugs é <strong>adicionar <code>iterall</code> como uma dependência do <code>package.json</code></strong> do nosso projeto.</p>
+<p>Você pode fazê-lo, instalando-o via:</p>
+<p><code>pnpm i iterall</code></p>
+<p>Ele será automaticamente adicionado ao <code>package.json</code> do seu projeto.</p>
+<pre><code class="hljs css language-json">  "dependencies": {
+    ...
+    "iterall": "^1.2.2",
+    ...
+  }
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="solucão-2"></a><a href="#solucão-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Solução 2</h3>
+<p>Uma das soluções é usar <a href="/pt-BR/3.2/hooks">hooks</a> para adicionar as dependências ausentes ao pacote <code>package.json</code>.</p>
+<p>Um exemplo foi o <a href="https://github.com/pnpm/pnpm/issues/1043">Webpack Dashboard</a> que não estava funcionando com o <code>pnpm</code>. Desde então, foi resolvido de forma que funciona com o <code>pnpm</code> agora.</p>
+<p>Costumava lançar um erro:</p>
+<pre><code class="hljs css language-console">Error: Cannot find module 'babel-traverse'
+  at /node_modules/.registry.npmjs.org/inspectpack/2.2.3/node_modules/inspectpack/lib/actions/parse
+</code></pre>
+<p>O problema era que o <code>babel-traverse</code> era usado na biblioteca<code>inspectpack</code> que era usada pelo <code>webpack-dashboard</code>. Mas <code>babel-traverse</code> não foi especificado em <code>package.json</code> do <code>inspectpack</code>. Ele ainda trabalhava com <code>npm</code> e <code>yarn</code> porque eles criam flat <code>node_modules</code>.</p>
+<p>A solução foi criar um <code>pnpmfile.js</code> com o seguinte conteúdo:</p>
+<pre><code class="hljs css language-js"><span class="hljs-built_in">module</span>.exports = {
+  <span class="hljs-attr">hooks</span>: {
+    readPackage (pkg) {
+      <span class="hljs-keyword">switch</span> (pkg.name) {
+        <span class="hljs-keyword">case</span> <span class="hljs-string">'inspectpack'</span>:
+          pkg.dependencies[<span class="hljs-string">'babel-traverse'</span>] = <span class="hljs-string">'^6.26.0'</span>
+          <span class="hljs-keyword">break</span>
+      }
+      <span class="hljs-keyword">return</span> pkg
+    }
+  }
+}
+</code></pre>
+<p>Depois de criar <code>pnpmfile.js</code>, exclua <code>shrinkwrap.yaml</code> apenas. Não há necessidade de deletar <code>node_modules</code>. Em seguida, instale as dependências e ele deve estar funcionando.</p>
+<h3><a class="anchor" aria-hidden="true" id="solucão-3"></a><a href="#solucão-3" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Solução 3</h3>
+<p>Caso haja muitos problemas, você pode usar a configuração <code>shamefully-flatten</code>. Isto cria uma estrutura plana <code>node_modules</code> semelhante à criada pelo <code>npm</code> ou <code>yarn</code>.</p>
+<p>Para usá-lo, tente <code>pnpm install --shaefish-flatten</code>.</p>
+</span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#por-que-minha-pasta-node_modules-usa-espaco-em-disco-se-os-pacotes-são-armazenados-em-um-armazenamento-global">Por que minha pasta <code>node_modules</code> usa espaço em disco se os pacotes são armazenados em um armazenamento global?</a></li><li><a href="#funciona-no-windows-e-mais-dificil-criar-links-simbolicos-no-windows">Funciona no Windows? É mais difícil criar links simbólicos no Windows</a></li><li><a href="#funciona-no-windows-a-abordagem-node_modules-aninhada-e-basicamente-incompativel-com-o-windows">Funciona no Windows? A abordagem <code>node_modules</code> aninhada é basicamente incompatível com o Windows</a></li><li><a href="#e-os-links-simbolicos-circulares">E os links simbólicos circulares?</a></li><li><a href="#por-que-tem-links-rigidos-por-que-não-ligar-diretamente-a-store-global">Por que tem links rígidos? Por que não ligar diretamente à store global?</a></li><li><a href="#o-pnpm-funciona-em-varios-discos-rigidos-ou-sistemas-de-arquivos">O pnpm funciona em vários discos rígidos ou sistemas de arquivos?</a><ul class="toc-headings"><li><a href="#o-caminho-da-store-e-especificado">O caminho da store é especificado</a></li><li><a href="#o-caminho-da-store-não-esta-especificado">O caminho da store NÃO está especificado</a></li></ul></li><li><a href="#o-que-o-pnpm-store-prune-faz-isso-e-prejudicial">O que o <code>pnpm store prune</code> faz? Isso é prejudicial?</a></li><li><a href="#o-que-significa-pnpm">O que significa <code>pnpm</code>?</a></li><li><a href="#pnpm-não-funciona-com-o-seu-projeto"><code>pnpm</code> não funciona com o &lt;SEU-PROJETO&gt;?</a><ul class="toc-headings"><li><a href="#solucão-1">Solução 1</a></li><li><a href="#solucão-2">Solução 2</a></li><li><a href="#solucão-3">Solução 3</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/pnpm-light.svg" alt="pnpm" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/pt-BR/installation.html">Getting Started</a></div><div><h5>Community</h5><a href="/pt-BR/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/pnpm" target="_blank">Stack Overflow</a><a href="https://gitter.im/pnpm/pnpm">Project Chat</a><a href="https://twitter.com/pnpmjs" target="_blank">Twitter</a></div><div><h5>More</h5><a href="https://medium.com/pnpm">Blog</a><a href="https://github.com/pnpm/pnpm">GitHub</a><a class="github-button" href="https://github.com/pnpm/pnpm" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '802b1d6ee5450a4296581a8e14aff417',
+                indexName: 'pnpm',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:pt-BR","version:3.2"]}
+              });
+            </script></body></html>

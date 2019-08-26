@@ -1,0 +1,131 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Como os pares são resolvidos · pnpm</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Um dos grandes recursos do pnpm é que, em um projeto, uma versão específica de um pacote sempre terá"/><meta name="docsearch:version" content="3.1.0"/><meta name="docsearch:language" content="pt-BR"/><meta property="og:title" content="Como os pares são resolvidos · pnpm"/><meta property="og:type" content="website"/><meta property="og:url" content="https://pnpm.js.org/"/><meta property="og:description" content="Um dos grandes recursos do pnpm é que, em um projeto, uma versão específica de um pacote sempre terá"/><meta property="og:image" content="https://pnpm.js.org/img/ogimage.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://pnpm.js.org/img/ogimage.png"/><link rel="shortcut icon" href="/img/favicon.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-91385296-1', 'auto');
+              ga('send', 'pageview');
+            </script><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/pt-BR"><img class="logo" src="/img/pnpm-no-name-with-frame.svg" alt="pnpm"/><h2 class="headerTitleWithLogo">pnpm</h2></a><a href="/pt-BR/versions"><h3>3.1.0</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/pt-BR/3.1.0/motivation" target="_self">Documentação</a></li><li class=""><a href="/pt-BR/3.1.0/faq" target="_self">FAQ</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><li class=""><a href="https://medium.com/pnpm" target="_self">Blog</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>Português (Brasil)</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/en/3.1.0/how-peers-are-resolved">English</a></li><li><a href="/de/3.1.0/how-peers-are-resolved">Deutsch</a></li><li><a href="/es-ES/3.1.0/how-peers-are-resolved">Español</a></li><li><a href="/hu/3.1.0/how-peers-are-resolved">Magyar</a></li><li><a href="/ru/3.1.0/how-peers-are-resolved">Русский</a></li><li><a href="/uk/3.1.0/how-peers-are-resolved">Українська</a></li><li><a href="/zh-CN/3.1.0/how-peers-are-resolved">中文</a></li><li><a href="https://crowdin.com/project/pnpm" target="_blank" rel="noreferrer noopener">Ajudar a traduzir</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Avançado</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Introdução</h3><ul class=""><li class="navListItem"><a class="navItem" href="/pt-BR/3.1.0/motivation">Motivação</a></li><li class="navListItem"><a class="navItem" href="/pt-BR/3.1.0/installation">Instalação</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Uso</h3><ul class=""><li class="navListItem"><a class="navItem" href="/pt-BR/3.1.0/pnpm-cli">pnpm CLI</a></li><li class="navListItem"><a class="navItem" href="/pt-BR/3.1.0/pnpx-cli">pnpx CLI</a></li><li class="navListItem"><a class="navItem" href="/pt-BR/3.1.0/configuring">Configurando</a></li><li class="navListItem"><a class="navItem" href="/pt-BR/3.1.0/hooks">Hooks</a></li><li class="navListItem"><a class="navItem" href="/pt-BR/3.1.0/aliases">Aliases</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">CLI comandos</h3><ul class=""><li class="navListItem"><a class="navItem" href="/pt-BR/3.1.0/pnpm-install">pnpm install</a></li><li class="navListItem"><a class="navItem" href="/pt-BR/3.1.0/pnpm-install-pkg">pnpm install &lt;pkg&gt;</a></li><li class="navListItem"><a class="navItem" href="/pt-BR/3.1.0/pnpm-unlink">pnpm unlink</a></li><li class="navListItem"><a class="navItem" href="/pt-BR/3.1.0/pnpm-store">pnpm store</a></li><li class="navListItem"><a class="navItem" href="/pt-BR/3.1.0/pnpm-recursive">pnpm recursive</a></li><li class="navListItem"><a class="navItem" href="/pt-BR/3.1.0/pnpm-server">pnpm server</a></li><li class="navListItem"><a class="navItem" href="/pt-BR/3.1.0/pnpm-import">pnpm import</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Recipes</h3><ul class=""><li class="navListItem"><a class="navItem" href="/pt-BR/3.1.0/continuous-integration">Integração Contínua</a></li><li class="navListItem"><a class="navItem" href="/pt-BR/3.1.0/workspace">Área de trabalho</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Avançado</h3><ul class=""><li class="navListItem"><a class="navItem" href="/pt-BR/3.1.0/benchmark">Benchmark</a></li><li class="navListItem"><a class="navItem" href="/pt-BR/3.1.0/limitations">Limitações</a></li><li class="navListItem"><a class="navItem" href="/pt-BR/3.1.0/about-package-store">Sobre a loja de pacotes (Store)</a></li><li class="navListItem"><a class="navItem" href="/pt-BR/3.1.0/symlinked-node-modules-structure">Symlinked `node_modules` estrutura</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/pt-BR/3.1.0/how-peers-are-resolved">Como os pares são resolvidos</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/pnpm/pt-BR" target="_blank" rel="noreferrer noopener">Translate</a><h1 class="postHeaderTitle">Como os pares são resolvidos</h1></header><article><div><span><p>Um dos grandes recursos do pnpm é que, em um projeto, uma versão específica de um pacote sempre terá
+um conjunto de dependências. Há uma exclusão dele - pacotes com <a href="https://docs.npmjs.com/files/package.json#peerdependencies">dependências de pares</a>.</p>
+<p>Dependências de pares são resolvidas de dependências instaladas mais acima no gráfico de dependência.
+Isto significa que se <code>foo@1.0.0</code> tiver dois pares (<code>bar@^1</code> e <code>baz@^1</code>) então pode ter diferentes conjuntos de dependências
+no mesmo projeto.</p>
+<pre><code class="hljs">- foo-pai<span class="hljs-number">-1</span>
+  - <span class="hljs-symbol">bar@</span><span class="hljs-number">1.0</span><span class="hljs-number">.0</span>
+  - <span class="hljs-symbol">baz@</span><span class="hljs-number">1.0</span><span class="hljs-number">.0</span>
+  - <span class="hljs-symbol">foo@</span><span class="hljs-number">1.0</span><span class="hljs-number">.0</span>
+- foo-pai<span class="hljs-number">-2</span>
+  - <span class="hljs-symbol">bar@</span><span class="hljs-number">1.0</span><span class="hljs-number">.0</span>
+  - <span class="hljs-symbol">baz@</span><span class="hljs-number">1.1</span><span class="hljs-number">.0</span>
+  - <span class="hljs-symbol">foo@</span><span class="hljs-number">1.0</span><span class="hljs-number">.0</span>
+</code></pre>
+<p>No exemplo acima, <code>foo@1.0.0</code> é instalado para <code>foo-parent-1</code> e <code>foo-parent-2</code>. Ambos os pacotes tem <code>bar</code> e <code>baz</code>as bem, mas
+eles dependem de diferentes versões do <code>baz</code>. Como resultado, <code>foo@1.0.0</code> tem dois conjuntos diferentes de dependências: um com <code>baz@1.0.0</code>
+e o outro com <code>baz@1.1.0</code>. Para suportar estes casos de uso, o pnpm tem que linkar rigidamente o <code>foo@1.0.0</code> tantas vezes quantos conjuntos de dependências ele tiver.</p>
+<p>Normalmente, se um pacote não tem dependências de peer, ele é ligado a uma pasta <code>node_modules</code> ao lado de links simbólicos de suas dependências.</p>
+<p><img src="/img/how-peers-are-resolved/1.png" alt=""></p>
+<p>No entanto, se <code>foo</code> tiver dependências de pares, não pode haver um único conjunto de dependências para ele, então
+criamos conjuntos diferentes para diferentes resoluções de dependência de pares:</p>
+<p><img src="/img/how-peers-are-resolved/2.png" alt=""></p>
+<p>Nós criamos links simbólicos para o <code>foo</code> que está dentro de <code>bar@1.0.0 + baz@1.0.0/node_modules</code> ou para o de <code>bar@1.0.0 + baz@1.1.0/node_modules</code>.
+Como consequência, o algoritmo do resolvedor do módulo Node.js encontrará os pares corretos.</p>
+<p><em>Se o par resolvido for uma dependência direta do projeto</em>, ele não será agrupado separadamente com o pacote dependente.
+Isso é feito para facilitar a criação de instalações com um nome previsível e rápido (<code>pnpm i foo</code>) e geral (<code>pnpm i</code>).
+Então, se o projeto depender de <code>bar @ 1.0.0</code>, as dependências do nosso exemplo serão agrupadas assim:</p>
+<p><img src="/img/how-peers-are-resolved/3.png" alt=""></p>
+<p><em>Se um pacote não tiver dependências ponto a ponto, mas tiver dependências com pares resolvidos mais alto no gráfico</em>,
+Esse pacote transitivo pode aparecer no projeto com diferentes conjuntos de dependências. Por exemplo, existe o pacote <code>a@1.0.0</code>
+com uma única dependência <code>framework@1.0.0</code>. <code>framework@1.0.0</code> tem uma dependência de peer<code>plugin@^1</code>. <code>a@1.0.0</code> nunca resolverá o problema
+pares de <code>framework@1.0.0</code>, por isso torna-se dependente dos pares de <code>framework@1.0.0</code> também.</p>
+<p>Veja como ficará em <code>node_modules/.registry.npmjs.org</code>, no caso, se <code>a@1.0.0</code> precisar aparecer duas vezes no projeto
+<code>node_modules</code>, uma vez resolvido com <code>plugin@1.0.0</code> e uma vez com <code>plugin@1.1.0</code>.</p>
+<p><img src="/img/how-peers-are-resolved/4.png" alt="">`</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/pt-BR/3.1.0/symlinked-node-modules-structure"><span class="arrow-prev">← </span><span>Symlinked `node_modules` estrutura</span></a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/pnpm-light.svg" alt="pnpm" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/pt-BR/installation.html">Getting Started</a></div><div><h5>Community</h5><a href="/pt-BR/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/pnpm" target="_blank">Stack Overflow</a><a href="https://gitter.im/pnpm/pnpm">Project Chat</a><a href="https://twitter.com/pnpmjs" target="_blank">Twitter</a></div><div><h5>More</h5><a href="https://medium.com/pnpm">Blog</a><a href="https://github.com/pnpm/pnpm">GitHub</a><a class="github-button" href="https://github.com/pnpm/pnpm" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '802b1d6ee5450a4296581a8e14aff417',
+                indexName: 'pnpm',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:pt-BR","version:3.1.0"]}
+              });
+            </script></body></html>
