@@ -76,10 +76,10 @@
             });
         </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/pnpm/pt-BR" target="_blank" rel="noreferrer noopener">Translate</a><h1 class="postHeaderTitle">Symlinked `node_modules` estrutura</h1></header><article><div><span><blockquote>
 <p>Este artigo descreve apenas como os <code>node_modules</code> do pnpm são estruturados quando não há pacotes com dependências peer.
-Para o cenário mais complexo de dependências com pares, consulte <a href="/pt-BR/3.4/how-peers-are-resolved">Como os pares são resolvidos</a>.</p>
+Para o cenário mais complexo de dependências com pares, consulte <a href="how-peers-are-resolved">Como os pares são resolvidos</a>.</p>
 </blockquote>
 <p>O layout <code>node_modules</code> do pnpm usa links simbólicos para criar uma estrutura aninhada de dependências.</p>
-<p>Cada <code>package @ version</code> está ligado a<code>node_modules</code> do <a href="/pt-BR/3.4/about-package-store">global store</a> apenas uma vez.
+<p>Cada <code>package @ version</code> está ligado a<code>node_modules</code> do <a href="about-the-package-store">global store</a> apenas uma vez.
 Vamos supor que você instale o <code>foo@1.0.0</code> que depende do <code>bar@1.0.0</code>. O pnpm irá linkar ambos os pacotes para <code>node_modules</code> assim:</p>
 <pre><code class="hljs">node_modules
 └─ .registry.npmjs.org

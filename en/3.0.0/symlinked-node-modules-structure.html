@@ -76,10 +76,10 @@
             });
         </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/pnpm/pnpm.github.io/edit/source/docs/symlinked-node-modules-structure.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 class="postHeaderTitle">Symlinked `node_modules` structure</h1></header><article><div><span><blockquote>
 <p>This article only describes how pnpm's <code>node_modules</code> are structured when there are no packages with peer dependencies.
-For the more complex scenario of dependencies with peers, see <a href="/en/3.0.0/how-peers-are-resolved">How peers are resolved</a>.</p>
+For the more complex scenario of dependencies with peers, see <a href="how-peers-are-resolved">How peers are resolved</a>.</p>
 </blockquote>
 <p>pnpm's <code>node_modules</code> layout uses symbolic links to create a nested structure of dependencies.</p>
-<p>Every <code>package@version</code> is linked to <code>node_modules</code> from the <a href="/en/3.0.0/about-package-store">global store</a> only once.
+<p>Every <code>package@version</code> is linked to <code>node_modules</code> from the <a href="about-the-package-store">global store</a> only once.
 Let's say you install <code>foo@1.0.0</code> that depends on <code>bar@1.0.0</code>. pnpm will hard link both packages to <code>node_modules</code> like this:</p>
 <pre><code class="hljs">node_modules
 └─ .registry.npmjs.org

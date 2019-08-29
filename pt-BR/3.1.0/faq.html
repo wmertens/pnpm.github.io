@@ -50,7 +50,7 @@ Caso contrário, os pacotes serão copiados, não vinculados.
 Isso é devido a uma limitação do sistema operacional em hard-linking. Veja <a href="https://github.com/pnpm/pnpm/issues/712">Issue # 712</a> para mais detalhes.</p>
 <p>O pnpm funciona de maneira diferente com base nos dois casos abaixo:</p>
 <h3><a class="anchor" aria-hidden="true" id="o-caminho-da-store-e-especificado"></a><a href="#o-caminho-da-store-e-especificado" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>O caminho da store é especificado</h3>
-<p>Se o caminho de armazenamento for especificado por meio da <a href="/pt-BR/3.1.0/configuring">configuração de armazenamento</a>, a cópia ocorrerá entre o armazenamento e todos os projetos que estiverem em um disco diferente.</p>
+<p>Se o caminho de armazenamento for especificado por meio da <a href="configuring">configuração de armazenamento</a>, a cópia ocorrerá entre o armazenamento e todos os projetos que estiverem em um disco diferente.</p>
 <p>Se você executar <code>pnpm install</code> no disco<code>D:</code>, então o armazenamento pnpm deve estar no disco<code>D:</code>.
 Se o repositório pnpm estiver localizado no disco <code>C:</code>, todos os pacotes requeridos serão copiados diretamente para o local do projeto.
 Isso reduz severamente os benefícios do pnpm.</p>
@@ -92,7 +92,7 @@ dependência deve ser corrigida. Isso pode levar algum tempo, portanto, o pnpm s
   }
 </code></pre>
 <h3><a class="anchor" aria-hidden="true" id="solucão-2"></a><a href="#solucão-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Solução 2</h3>
-<p>Uma das soluções é usar <a href="/pt-BR/3.1.0/hooks">hooks</a> para adicionar as dependências ausentes ao pacote <code>package.json</code>.</p>
+<p>Uma das soluções é usar <a href="hooks">hooks</a> para adicionar as dependências ausentes ao pacote <code>package.json</code>.</p>
 <p>Um exemplo foi o <a href="https://github.com/pnpm/pnpm/issues/1043">Webpack Dashboard</a> que não estava funcionando com o <code>pnpm</code>. Desde então, foi resolvido de forma que funciona com o <code>pnpm</code> agora.</p>
 <p>Costumava lançar um erro:</p>
 <pre><code class="hljs css language-console">Error: Cannot find module 'babel-traverse'
